@@ -1,0 +1,7 @@
+\newcommand{\questlabel}{Question}
+\newcommand{\solutionlabel}{Solution}
+
+\NewDocumentEnvironment{quest}{o}{\IfNoValueTF{#1}{\textbf{\questlabel.}}{\textbf{\questlabel\ #1.}}\par}{}
+\NewDocumentCommand{\solution}{}{\par\textit{\solutionlabel.}\hspace{2mm}}
+\NewDocumentCommand{\score}{omo}{\hfill{\bfseries[\IfNoValueF{#1}{#1 }#2\IfNoValueF{#3}{ #3}]}}
+\NewDocumentCommand{\hint}{O{Hint}m}{{\itshape(#1: #2)}}
