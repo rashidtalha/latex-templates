@@ -64,19 +64,10 @@
 % VARIOUS BRACKETS
 %------------------------------------------------------------
 % General
-% \DeclarePairedDelimiter{\paren}{\lparen}{\rparen}
-% \DeclarePairedDelimiter{\cparen}{\lbrace}{\rbrace}
-% \DeclarePairedDelimiter{\bparen}{\lbrack}{\rbrack}
 \DeclarePairedDelimiterX{\paren}[1]{\lparen}{\rparen}{\ifblank{#1}{\:\dots\:}{#1}}
 \DeclarePairedDelimiterX{\cparen}[1]{\lbrace}{\rbrace}{\ifblank{#1}{\:\dots\:}{#1}}
 \DeclarePairedDelimiterX{\bparen}[1]{\lbrack}{\rbrack}{\ifblank{#1}{\:\dots\:}{#1}}
 
-% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-% \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-% \DeclarePairedDelimiter{\inner}{\langle}{\rangle}
-% \DeclarePairedDelimiter{\mean}{\langle}{\rangle}
-% \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-% \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 \DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{\ifblank{#1}{\:\cdot\:}{#1}}
 \DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{\ifblank{#1}{\:\cdot\:}{#1}}
 \DeclarePairedDelimiterX{\inner}[1]{\langle}{\rangle}{\ifblank{#1}{\:\cdot\:,\:\cdot\:}{#1}}
@@ -87,8 +78,6 @@
 \DeclareDocumentCommand{\at}{O{}m}{#1\rvert_{#2}}
 
 % Set brackets
-% Older def.
-% \DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
 \newcommand\SetSymbol[1][]{\nonscript\:#1\vert\allowbreak\nonscript\:\mathopen{}}
 \providecommand\st{}
 \DeclarePairedDelimiterX{\set}[1]{\lbrace}{\rbrace}{\renewcommand\st{\SetSymbol[\delimsize]}#1}
@@ -100,23 +89,10 @@
 % Dirac brackets
 \DeclarePairedDelimiter{\bra}{\langle}{\rvert}
 \DeclarePairedDelimiter{\ket}{\lvert}{\rangle}
-
-% Older def.
-% \DeclareDocumentCommand{\braket}{mom}{
-%   \IfValueTF{#2}
-%     {\left\langle#1\right\rvert#2\left\lvert#3\right\rangle}
-%     {\left\langle#1\middle\rvert#3\right\rangle}
-% }
 \DeclarePairedDelimiterX{\braket}[3]{\langle}{\rangle}{#1\,\ifblank{#2}{}{\delimsize\vert\,\mathopen{}#2\,}\delimsize\vert\,\mathopen{}#3}
 
 \DeclarePairedDelimiterXPP{\nord}[1]{N}{\lbrace}{\rbrace}{}{#1}
 \DeclarePairedDelimiterXPP{\tord}[1]{T}{\lbrace}{\rbrace}{}{#1}
-
-\newcommand{\qop}[1]{\hat{#1}}
-\newcommand{\qdagger}[1]{\hat{#1}^{\dagger}}
-
-\newcommand{\qbar}[1]{\overline{#1}} % adjoint such as \psi-bar
-\newcommand{\anti}[1]{\overline{#1}} % antiparticle
 
 %------------------------------------------------------------
 % VARIOUS OPERATORS
@@ -130,12 +106,12 @@
 \newcommand{\isom}{\mathrel{\cong}} % isomorphism
 \newcommand{\homeo}{\mathrel{\cong}} % homeomorphism
 
+% \det,\ker, \arg already defined
 \DeclareMathOperator{\Tr}{Tr} % Trace
 \DeclareMathOperator{\img}{im} % Image
 \DeclareMathOperator{\rank}{rank} % Rank
 \DeclareMathOperator{\adj}{adj}
 \DeclareMathOperator{\ad}{ad}
-
 \DeclareMathOperator{\Arg}{Arg}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\supp}{supp}
@@ -146,6 +122,7 @@
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\sign}{sgn}
 
 % Probability and statistics
@@ -154,13 +131,9 @@
 \DeclareMathOperator{\expected}{\mathbf{E}}
 \DeclareMathOperator{\variance}{\mathbf{Var}}
 
-% \det is determinant (already defined)
-% \ker is kernal (already defined)
-% \arg (already defined)
-
+\DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\cosec}{cosec}
 \DeclareMathOperator{\cosech}{cosech}
-\DeclareMathOperator{\sech}{sech}
 
 % Alternative inverse trigonometric functions
 \DeclareMathOperator{\asin}{{sin}^{-1}}
@@ -179,8 +152,7 @@
 \DeclareMathOperator{\asech}{{sech}^{-1}}
 
 % Logrithm
-% \log -> log (already defined)
-% \ln -> ln (already defined)
+% \log, \ln already defined
 \DeclareMathOperator{\Log}{Log}
 
 % Some other functions
@@ -198,13 +170,15 @@
 % ABBREVIATIONS AND SUCH
 %------------------------------------------------------------
 \newcommand{\B}{\mathcal{B}}
-\newcommand{\BigO}{\mathcal{O}} % Big-O notation
 \newcommand{\D}{\mathcal{D}}
+\newcommand{\Lag}{\mathcal{L}}
+\newcommand{\Ham}{\mathcal{H}}
+\newcommand{\X}{\mathfrak{X}}
+
+\newcommand{\BigO}{\mathcal{O}} % Big-O notation
 \newcommand{\Der}{\mathrm{Der}} % Derivation
 \newcommand{\id}{\mathrm{id}} % Identity element
 \newcommand{\Id}{\mathrm{Id}} % Identity element (another one)
-\newcommand{\Lag}{\mathcal{L}}
-\newcommand{\Ham}{\mathcal{H}}
 \newcommand{\pt}{\{\mathrm{pt}\}} % Point
 \newcommand{\vol}{\mathrm{vol}} % Volume
 
@@ -221,30 +195,13 @@
 \newcommand{\uvec}[1]{\boldsymbol{\mathbf{\hat{#1}}}}
 
 % Derivatives
-\let\divsymb\div
-\renewcommand{\div}{\nabla\cdot}
 \newcommand{\curl}{\nabla\times}
-\newcommand{\lap}{\nabla^2}
 \newcommand{\grad}{\nabla}
 
-% \newcommand{\st}[1][|]{\,#1\,} % (older) for the set builder notation
 \newcommand{\closure}[1]{\overline{#1}}
 \newcommand{\interior}[1]{{#1}^{\circ}}
-
-%-------------------------------------------------------------
-% COLOURS
-%-------------------------------------------------------------
-\RequirePackage{xcolor}
-\definecolor{lightgray}{RGB}{211,211,211}
-\definecolor{darkgray}{RGB}{64,64,79}
-\definecolor{gold}{RGB}{255,204,0}
-\definecolor{orange}{RGB}{255,103,0}
-\definecolor{red}{RGB}{255,0,0}
-\definecolor{pink}{RGB}{255,182,193}
-\definecolor{crimson}{RGB}{211,0,63}
-\definecolor{trueblue}{RGB}{0,47,167}
-\definecolor{teal}{RGB}{0,128,128}
-\definecolor{truegreen}{RGB}{0,102,0}
+\newcommand{\inside}[1]{\mathrm{Int}(#1)}
+\newcommand{\boundary}[1]{\partial{#1}}
 
 %-------------------------------------------------------------
 % SHORT MACROS
