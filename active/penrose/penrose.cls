@@ -65,9 +65,13 @@
   \newcommand{\uaffiliation}{#1}
   \newcommand{\@affiliationline}{{\itshape\uaffiliation\par}}
 }
-\DeclareDocumentCommand{\date}{m}{
-  \newcommand{\udate}{#1}
-  \newcommand{\@dateline}{{(Date: #1)\par}}
+\DeclareDocumentCommand{\date}{sm}{
+  \newcommand{\udate}{#2}
+  \newcommand{\@dateline}{
+    \IfBooleanTF{#1}
+      {#2}
+      {(Date: #2)\par}
+  }
 }
 
 %------------------------------------------------------------
