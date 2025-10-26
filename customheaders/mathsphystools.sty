@@ -125,6 +125,8 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\sign}{sgn}
 
+\DeclareMathOperator{\Po}{\mathcal{P}} % Powerset
+
 % Probability and statistics
 \let\P\relax
 \DeclareMathOperator{\P}{\mathbb{P}}
@@ -198,10 +200,18 @@
 \newcommand{\curl}{\nabla\times}
 \newcommand{\grad}{\nabla}
 
-\newcommand{\closure}[1]{\overline{#1}}
-\newcommand{\interior}[1]{{#1}^{\circ}}
-\newcommand{\inside}[1]{\mathrm{Int}(#1)}
-\newcommand{\boundary}[1]{\partial{#1}}
+% OLDER SYMBOLS
+% \newcommand{\closure}[1]{\overline{#1}}
+% \newcommand{\interior}[1]{{#1}^{\circ}}
+% \newcommand{\inside}[1]{\mathrm{Int}(#1)}
+% \newcommand{\boundary}[1]{\partial{#1}}
+
+% NEWER SYMBOLS (BREAKING CHANGE)
+\newcommand{\interior}[1]{\mathrm{Int}_{#1}}
+\newcommand{\exterior}[1]{\mathrm{Ext}_{#1}}
+\newcommand{\closure}[1]{\mathrm{Cl}_{#1}}
+\newcommand{\frontier}[1]{\mathrm{Fr}_{#1}}
+\newcommand{\boundary}[1]{\pd_{#1}}
 
 %-------------------------------------------------------------
 % SHORT MACROS
