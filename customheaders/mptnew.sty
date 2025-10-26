@@ -1,0 +1,196 @@
+\RequirePackage{xparse}
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage{esint}
+
+% Suggested for the user: mptnewext.sty
+
+%------------------------------------------------------------
+% SETS, GROUPS, RINGS, FIELDS, ALGEBRAS
+%------------------------------------------------------------
+\DeclareMathOperator{\Po}{\mathcal{P}} % Powerset
+
+% Number sets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}} % Finite field
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\Nz}{\N_{0}}
+\newcommand{\Np}{\N_{+}}
+
+% Special spaces
+\newcommand{\RP}{\R{P}} % Real Projective
+\newcommand{\CP}{\R{P}} % Complex Projective
+\newcommand{\KP}{\mathbb{K}{P}} % Projective
+\newcommand{\Hil}{\mathcal{H}} % Hilbert Space
+
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\img}{im} % Image
+% \DeclareMathOperator{\ker}{ker} % already defined
+
+% Matrix groups
+\newcommand{\Mat}{\mathrm{M}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\Orth}{\mathrm{O}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\Spin}{\mathrm{Spin}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\PGL}{\mathrm{PGL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\PSO}{\mathrm{PSO}}
+\newcommand{\PSU}{\mathrm{PSU}}
+
+% Matrix algebras, categories
+\newcommand{\Lie}[1]{\mathfrak{#1}}
+\newcommand{\cat}[1]{\mathsf{#1}} % categories
+
+% Symbols related to groups, rings, fields, algebras
+\newcommand{\subgroup}{\mathrel{\leq}}
+\newcommand{\nsubgroup}{\mathrel{\trianglelefteq}}
+\DeclarePairedDelimiter{\cyclic}{\langle}{\rangle}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\ch}{char}
+
+%------------------------------------------------------------
+% VECTORS, TOPOLOGY, GEOMETRY, ANALYSIS
+%------------------------------------------------------------
+% Complex Analysis
+\let\Re\relax
+\let\Im\relax
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
+\newcommand{\conj}[1]{\overline{#1}}
+
+% Vectors
+\let\oldvec\vec
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\uvec}[1]{\boldsymbol{\mathbf{\hat{#1}}}}
+
+% Derivatives
+\newcommand{\curl}{\nabla\times}
+\newcommand{\grad}{\nabla}
+\DeclareMathOperator{\alemb}{\square} % shortcut for the \square
+
+% Topological Operators
+\newcommand{\interior}[1]{\mathrm{Int}_{#1}}
+\newcommand{\exterior}[1]{\mathrm{Ext}_{#1}}
+\newcommand{\closure}[1]{\mathrm{Cl}_{#1}}
+\newcommand{\frontier}[1]{\mathrm{Fr}_{#1}}
+\newcommand{\boundary}[1]{\pd_{#1}}
+\newcommand{\varinterior}[1]{{#1}^{\circ}}
+\newcommand{\varclosure}[1]{\overline{#1}}
+
+%------------------------------------------------------------
+% VARIOUS BRACKETS
+%------------------------------------------------------------
+% Set brackets
+\newcommand\SetSymbol[1][]{\nonscript\:#1\vert\allowbreak\nonscript\:\mathopen{}}
+\providecommand\st{}
+\DeclarePairedDelimiterX{\set}[1]{\lbrace}{\rbrace}{\renewcommand\st{\SetSymbol[\delimsize]}#1}
+
+% General
+\DeclarePairedDelimiterX{\paren}[1]{\lparen}{\rparen}{\ifblank{#1}{\:\dots\:}{#1}}
+\DeclarePairedDelimiterX{\cparen}[1]{\lbrace}{\rbrace}{\ifblank{#1}{\:\dots\:}{#1}}
+\DeclarePairedDelimiterX{\bparen}[1]{\lbrack}{\rbrack}{\ifblank{#1}{\:\dots\:}{#1}}
+
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\inner}[1]{\langle}{\rangle}{\ifblank{#1}{\:\cdot\:,\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\mean}[1]{\langle}{\rangle}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\ceil}[1]{\lceil}{\rceil}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\floor}[1]{\lfloor}{\rfloor}{\ifblank{#1}{\:\cdot\:}{#1}}
+
+%------------------------------------------------------------
+% FUNCTIONS
+%------------------------------------------------------------
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\cosec}{cosec}
+\DeclareMathOperator{\cosech}{cosech}
+
+% Alternative inverse trigonometric functions
+\DeclareMathOperator{\asin}{{sin}^{-1}}
+\DeclareMathOperator{\acos}{{cos}^{-1}}
+\DeclareMathOperator{\atan}{{tan}^{-1}}
+\DeclareMathOperator{\acot}{{cot}^{-1}}
+\DeclareMathOperator{\acsc}{{csc}^{-1}}
+\DeclareMathOperator{\asec}{{sec}^{-1}}
+
+% Alternative inverse hyperbolic functions
+\DeclareMathOperator{\asinh}{{sinh}^{-1}}
+\DeclareMathOperator{\acosh}{{cosh}^{-1}}
+\DeclareMathOperator{\atanh}{{tanh}^{-1}}
+\DeclareMathOperator{\acoth}{{coth}^{-1}}
+\DeclareMathOperator{\acsch}{{csch}^{-1}}
+\DeclareMathOperator{\asech}{{sech}^{-1}}
+
+% Logrithm
+\DeclareMathOperator{\Log}{Log} % \log, \ln already defined
+
+% Other functions
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfc}{erfc}
+
+%------------------------------------------------------------
+% OPERATORS, RELATIONS
+%------------------------------------------------------------
+% Common operators
+\renewcommand{\d}{\mathop{}\!\mathrm{d}} % upright dx
+\newcommand{\pd}{\partial} % shortcut for the \partial
+\newcommand{\dual}{\raisebox{0.5ex}{\scalebox{0.6}[0.6]{$\vee$}}} % dual
+\newcommand{\Int}{\int\limits} % integral with display limits
+\newcommand{\compose}{\mathbin{\circ}} % composition of functions
+
+% Relations
+\newcommand{\qeq}{\stackrel{?}{=}}
+\newcommand{\ifeq}{\mathrel{``{=}"}}
+\newcommand{\isom}{\mathrel{\cong}} % isomorphism
+\newcommand{\homeo}{\mathrel{\cong}} % homeomorphism
+
+\DeclareMathOperator{\Tr}{Tr} % Trace
+\DeclareMathOperator{\rank}{rank} % Rank
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Arg}{Arg} % \arg already defined
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator*{\res}{res} % Residue
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\sign}{sgn}
+% \DeclareMathOperator{\det}{det} % already defined
+
+%------------------------------------------------------------
+% ABBREVIATIONS AND SUCH
+%------------------------------------------------------------
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\X}{\mathfrak{X}}
+
+\newcommand{\Leb}{\mathcal{L}}
+\newcommand{\Lag}{\mathcal{L}}
+\newcommand{\Ham}{\mathcal{H}}
+\newcommand{\Der}{\mathrm{Der}} % Derivation
+
+\newcommand{\id}{\mathrm{id}} % Identity element/map
+\newcommand{\Id}{\mathrm{Id}} % Identity element/map (another one)
+
+\newcommand{\pt}{\{\mathrm{pt}\}} % Point
+\newcommand{\vol}{\mathrm{vol}} % Volume
+
+%-------------------------------------------------------------
+% GENERAL MACROS
+%-------------------------------------------------------------
+\newcommand{\missing}[1]{{\color{red}#1}}
+\newcommand{\keyword}[1]{\textsf{#1}}
