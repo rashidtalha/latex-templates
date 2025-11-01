@@ -276,3 +276,5 @@ TSWLatexianTemp*
 *.lpz
 
 local-*/
+sandbox.tex
+sandbox.pdf
