@@ -278,3 +278,4 @@ TSWLatexianTemp*
 local-*/
 sandbox.tex
 sandbox.pdf
+*.py
