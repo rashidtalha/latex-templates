@@ -21,18 +21,17 @@
 \newcommand{\A}{\mathbb{A}}
 \newcommand{\Nz}{\N_{0}}
 \newcommand{\Np}{\N_{+}}
-
-% Special spaces
 \newcommand{\RP}{\R{P}} % Real Projective
 \newcommand{\CP}{\R{P}} % Complex Projective
 \newcommand{\KP}{\mathbb{K}{P}} % Projective
-\newcommand{\Hil}{\mathcal{H}} % Hilbert Space
 
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Hol}{Hol}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\img}{im} % Image
 % \DeclareMathOperator{\ker}{ker} % already defined
@@ -165,27 +164,38 @@
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\Arg}{Arg} % \arg already defined
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator*{\res}{res} % Residue
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\sign}{sgn}
 % \DeclareMathOperator{\det}{det} % already defined
 
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\orb}{orb}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\spec}{spec}
+
 %------------------------------------------------------------
 % ABBREVIATIONS AND SUCH
 %------------------------------------------------------------
+\let\polishL\L
+\let\hungarianH\H
+
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\X}{\mathfrak{X}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
 
-\newcommand{\Leb}{\mathcal{L}}
-\newcommand{\Lag}{\mathcal{L}}
-\newcommand{\Ham}{\mathcal{H}}
-\newcommand{\Der}{\mathrm{Der}} % Derivation
+\let\Lag\L
+\let\Leb\L
+\let\Hil\H
 
 \newcommand{\id}{\mathrm{id}} % Identity element/map
 \newcommand{\Id}{\mathrm{Id}} % Identity element/map (another one)
 
+\newcommand{\Der}{\mathrm{Der}}
 \newcommand{\pt}{\{\mathrm{pt}\}} % Point
 \newcommand{\vol}{\mathrm{vol}} % Volume
 

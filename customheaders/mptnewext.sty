@@ -1,5 +1,9 @@
 % Extension of mptnew.sty, and requires it to be loaded
-\RequirePackage{mptnew}
+\RequirePackage{xparse}
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage{esint}
+% \RequirePackage{mptnew}
 
 \RequirePackage{siunitx}
 \RequirePackage{tensor}
@@ -30,9 +34,5 @@
 \DeclarePairedDelimiterXPP{\nord}[1]{N}{\lbrace}{\rbrace}{}{#1}
 \DeclarePairedDelimiterXPP{\tord}[1]{T}{\lbrace}{\rbrace}{}{#1}
 
-%------------------------------------------------------------
-% UNSORT
-%------------------------------------------------------------
-\def\strike{\bgroup \ULdepth=-.55ex \ULset} % Strike through
 % \DeclareDocumentCommand{\at}{O{}m}{#1\rvert_{#2}}
 % \newcommand{\BigO}{\mathcal{O}} % Big-O notation
