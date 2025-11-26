@@ -6,6 +6,14 @@ A (growing) handmade collection of latex templates, classes and style files.
 
 ---
 
+### To-Do List:
+
++ Update the README file (!)
++ Add some documentation
++ Update cauchy, curie and salam to support all the minor upgrades made to penrose
+
+---
+
 ### Currently Active Projects:
 *Articles, essays, short reports.*
 + `penrose:` An elegent but broadly applicable class for general purpose articles, essays and shorter assignments.
