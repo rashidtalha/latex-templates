@@ -146,7 +146,7 @@
 %------------------------------------------------------------
 \newcommand{\questlabel}{Question}
 \newcommand{\solutionlabel}{Solution}
-\let\questlabelbreak\par
+\let\questlabelbreak\relax
 
 \NewDocumentEnvironment{quest}{o}{\IfNoValueTF{#1}{\textbf{\questlabel.}}{\textbf{\questlabel\ #1.}}\questlabelbreak}{}
 \NewDocumentCommand{\solution}{}{\par\textit{\solutionlabel.}\hspace{2mm}}
