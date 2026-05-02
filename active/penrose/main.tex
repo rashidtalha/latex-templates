@@ -12,9 +12,11 @@
 
 % Optional
 \subtitle{Documentation and Feature Demonstration for \texttt{penrose.cls} Version 2.0}
+
 % Optional
 \author{Rashid Talha}
 % \renewcommand{\uauthor}{Rashid Talha}
+
 % Optional
 \affiliation{Scuola Internazionale Superiore di Studi Avanzati (SISSA), Trieste, Italy}
 
@@ -22,7 +24,6 @@
 % The starred version \date*{<date>} prints just the <date>. 
 % The unstarred version \date{<date>} prints "(Date: <date>)".
 \date*{May, 2026}
-
 
 \begin{document}
 
@@ -105,7 +106,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.33\textwidth]{images/1000.png}
+  \includegraphics[width=\textwidth]{../generic-media/180.png}
   \caption{A sample figure showing the clean captioning style of the class.}
   \label{fig:figname}
 \end{figure}
@@ -117,7 +118,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
 
 \subsection{Subsection Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
 
 In case you want a wider text block. You can use the \texttt{widetext} environment.
 
@@ -141,7 +142,7 @@ After procrastinating for hours, I finally gave up on avoiding AI and asked Chat
 \end{center}
 
 \nocite{*}
-\renewcommand{\refname}{Biblio}
+% \renewcommand{\refname}{Bibliography}
 \phantomsection\addcontentsline{toc}{section}{\refname}
 {\small\bibliography{references}}
 

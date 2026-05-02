@@ -1,4 +1,3 @@
-
 %------------------------------------------------------------
 % INITIALIZING & HANDLING CLASS OPTIONS
 %------------------------------------------------------------
@@ -39,8 +38,8 @@
   right=30mm,
   headheight=7mm,
   headsep=7mm,
-  footskip=8mm,
-]{geometry}
+  footskip=10mm,
+  ]{geometry}
 
 %------------------------------------------------------------
 % GLOBAL TYPOGRAPHY
@@ -201,14 +200,14 @@
 % HYPERLINKS
 %------------------------------------------------------------
 \RequirePackage{hyperref}
-  \hypersetup{
-    colorlinks=true,
-    linktoc=all,
-    allcolors=trueblue,
-    linkcolor=crimson,
-    citecolor=trueblue,
-    urlcolor=crimson,
-  }
+\hypersetup{
+  colorlinks=true,
+  linktoc=all,
+  allcolors=trueblue,
+  linkcolor=crimson,
+  citecolor=trueblue,
+  urlcolor=crimson,
+}
 
 %------------------------------------------------------------
 % FOR MORE COMPATIBILITY WITH SALAM.CLS / DEPRECATED
