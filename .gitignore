@@ -275,6 +275,7 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 
+local*/
 local-*/
 sandbox.tex
 sandbox.pdf
