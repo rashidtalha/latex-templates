@@ -1,21 +1,12 @@
-%!TEX TS-options = --shell-escape
-\documentclass{hilbert}
+\documentclass[11pt]{hilbert}
 
 \usepackage{lipsum}
-\input{additional/metadata.tex} % document properties
-\usepackage[hidelinks]{hyperref}
-\graphicspath{{images/}}
+\input{additional/metadata.tex}
 
 \begin{document}
 
 \frontmatter
-  % \halftitlepage
-  \halftitlepage[Custom text instead of the Title]
-
-  % \artpage{1000}
-  \artpage{1000}[And here comes a caption!]
-  % \artpage[<width>]{<imagefile>}[<captions>]
-  
+  \halftitlepage[Optional text instead of the Title]
   \input{additional/fulltitle}
   \input{additional/copyright}
   \input{additional/dedication}
@@ -26,11 +17,9 @@
 
 \mainmatter
   \input{chapters/sunflower.tex}
-  
-  \blankpage
   \blankpage[With a custom `page left blank' message]
-
   \input{chapters/greektoys.tex}
+  \blankpage[With a custom `page left blank' message]
   \input{chapters/rockyroad.tex}
 
 \backmatter
