@@ -5,11 +5,11 @@
 % \ProvidesClass{penrose}[2023/12/29 A simple article class for maths and physics]
 \ProvidesClass{penrose}[2026/05/01 v2 Personalised, customizable, clean article class]
 
-\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} %default (in the article cls)
+\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} % default (in the article cls)
 \DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
-\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}} %default (in the article cls)
+\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}} % default (in the article cls)
 \DeclareOption{fleqn}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{leqno}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption*{\ClassError{penrose}{Unknown Option: '\CurrentOption'}{}}
@@ -50,6 +50,8 @@
 \RequirePackage{setspace}
 \RequirePackage{parskip}
 \RequirePackage{microtype}
+
+\setstretch{1.1} % increased line spacing
 
 %------------------------------------------------------------
 % COLOURS
@@ -129,20 +131,20 @@
 % HEADER & FOOTER
 %------------------------------------------------------------
 \RequirePackage{fancyhdr}
-  % Header-Footer style for the first page
-  \fancypagestyle{hf-first}{
-    \fancyhf{}
-    \fancyfoot[C]{-- \thepage\ --}
-    \renewcommand{\headrulewidth}{0pt}
-  }
-  % Header-Footer style for the rest of the document
-  \fancypagestyle{hf-general}{
-    \fancyhf{}
-    \fancyhead[L]{{\slshape\protect\ushorttitle}}
-    \fancyhead[R]{{\slshape\protect\uauthor}}
-    \fancyfoot[C]{-- \thepage\ --}
-    \renewcommand{\headrulewidth}{0pt}
-  }
+% Header-Footer style for the first page
+\fancypagestyle{hf-first}{
+  \fancyhf{}
+  \fancyfoot[C]{-- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt}
+}
+% Header-Footer style for the rest of the document
+\fancypagestyle{hf-general}{
+  \fancyhf{}
+  \fancyhead[L]{{\slshape\protect\ushorttitle}}
+  \fancyhead[R]{{\slshape\protect\uauthor}}
+  \fancyfoot[C]{-- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt}
+}
 
 % Activating the default header-footer style
 \pagestyle{hf-general}
