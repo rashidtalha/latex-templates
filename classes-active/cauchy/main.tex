@@ -1,20 +1,16 @@
 \documentclass[11pt]{cauchy}
 
-% \usepackage{mlmodern}
-\usepackage{mathsphystools}
-% \usepackage{thmstyles}
-% \usepackage{graphicx}
-% \graphicspath{{images/}}
+\usepackage{mpt-core}
+\usepackage{mpt-thm}
+\numberwithin{equation}{section}
 
-\title[Title for the Header]{A Very Long Title That Is Being Used for This Document on Purpose}
-\subtitle{This is an optional subtitle}
-\author{Author M. Person}
-\affiliation{Some Multi-line Affiliation,\\With City}
-\date{\today}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\input{additional/metadata.tex}
 \begin{document}
 
 \input{additional/fulltitle}
-
 \frontmatter
 \tableofcontents
 \clearpage
@@ -29,7 +25,7 @@
 
 \mainmatter
 \section{Section Heading}
-\newthought{The first few words} of a new section can be typeset in a different style by using the \verb|\newthought{...}| command. The \texttt{penrose.cls} class file has five class options: three font sizes \texttt{10pt} (default), \texttt{11pt}, and \texttt{12pt}, and a switch to activate the \texttt{draft} mode or revert to \texttt{final} (default).
+of a new section can be typeset in a different style by using the \verb|\newthought{...}| command. The \texttt{penrose.cls} class file has five class options: three font sizes \texttt{10pt} (default), \texttt{11pt}, and \texttt{12pt}, and a switch to activate the \texttt{draft} mode or revert to \texttt{final} (default).
 
 Customised styles for tables, captions and lists have been added, along with several typographical enhancements through the use of \texttt{parskip}, \texttt{microtype} and \texttt{lmodern}. The \texttt{hyperref} package has been loaded in the class file with some custom settings.
 
@@ -52,7 +48,7 @@ There are five class-specific commands for the preamble\sidenote{The \texttt{sid
   \label{tab:the-only-table}
 \end{table}
 
-Here is a simple citation~\cite{latexcompanion}. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Here is a simple citation~\cite{CitekeyArticle}. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -80,19 +76,26 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \section{Section Heading}
-\newthought{Lorem ipsum dolor sit amet}, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\begin{equation}
+  E = mc^{2}
+\end{equation}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{nthm}
+  This is a theorem.
+\end{nthm}
 
 \input{chapters/greektoys}
 
 \appendix
 
-% \renewcommand{\theequation}{\thesection.\arabic{equation}}
-% \setcounter{equation}{0}
-
 \input{chapters/linearsunflowers}
 
-\nocite{*}
 \clearpage
+\nocite{*}
+% \renewcommand{\refname}{Bibliography}
+\phantomsection\addcontentsline{toc}{section}{\refname}
 {\small\bibliography{references}}
 
 \backmatter
