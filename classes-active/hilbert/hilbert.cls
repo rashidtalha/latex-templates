@@ -72,6 +72,8 @@
 \RequirePackage{setspace}
 \RequirePackage{microtype}
 
+\setstretch{1.1} % increased line spacing
+
 %------------------------------------------------------------
 % COLOURS
 %------------------------------------------------------------
@@ -90,8 +92,50 @@
 %-------------------------------------------------------------
 % DOCUMENT INFORMATION COMMANDS
 %-------------------------------------------------------------
-\DeclareDocumentCommand{\title}{m}{\newcommand{\utitle}{#1}\renewcommand{\@title}{#1}}
-\DeclareDocumentCommand{\author}{m}{\newcommand{\uauthor}{#1}\renewcommand{\@author}{#1}}
+\DeclareDocumentCommand{\title}{om}{
+  \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
+  \newcommand{\utitle}{#2}
+  \renewcommand{\@title}{#1}
+}
+
+\DeclareDocumentCommand{\author}{m}{
+  \newcommand{\uauthor}{#1}
+  \renewcommand{\@author}{#1}
+}
+
+%-------------------------------------------------------------
+% HEADERS & FOOTERS
+%-------------------------------------------------------------
+\RequirePackage{fancyhdr}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\fancypagestyle{fancy-front}{
+  \fancyhf{}
+  \fancyfoot[C]{-- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt} 
+}
+\fancypagestyle{fancy-main}{
+  \fancyhf{}
+  \fancyhead[CO]{{\small\scshape\leftmark}}
+  \fancyhead[CE]{{\small\scshape\ushorttitle}}
+  \fancyfoot[C]{-- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt}
+}
+\fancypagestyle{fancy-back}{
+  \fancyhf{}
+  \fancyhead[CO]{{\small\scshape\leftmark}}
+  \fancyhead[CE]{{\small\scshape\ushorttitle}}
+  \fancyfoot[C]{-- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt} 
+}
+
+% This is the style for the chapter page
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{-- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt} 
+}
 
 %-------------------------------------------------------------
 % TABLE OF CONTENTS
@@ -129,7 +173,7 @@
   {}
 
 %-------------------------------------------------------------
-% PAGES: OPTIONAL HALF-TITLE PAGE, BLANK & ART PAGES
+% PAGES: OPTIONAL HALF-TITLE PAGE AND BLANK PAGE
 %-------------------------------------------------------------
 \NewDocumentCommand{\halftitlepage}{o}{%
   \clearpage
@@ -146,41 +190,6 @@
   {\centering\itshape\IfValueTF{#1}{#1}{This page left blank intentionally}\par}%
   \clearpage
 }
-
-%-------------------------------------------------------------
-% HEADERS & FOOTERS
-%-------------------------------------------------------------
-\RequirePackage{fancyhdr}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-
-\fancypagestyle{fancy-front}{
-  \fancyhf{}
-  \fancyfoot[C]{-- \thepage\ --}
-  \renewcommand{\headrulewidth}{0pt} 
-}
-\fancypagestyle{fancy-main}{
-  \fancyhf{}
-  \fancyhead[CO]{{\small\scshape\leftmark}}
-  \fancyhead[CE]{{\small\scshape\utitle}}
-  \fancyfoot[C]{-- \thepage\ --}
-  \renewcommand{\headrulewidth}{0pt}
-}
-\fancypagestyle{fancy-back}{
-  \fancyhf{}
-  \fancyhead[CO]{{\small\scshape\leftmark}}
-  \fancyhead[CE]{{\small\scshape\utitle}}
-  \fancyfoot[C]{-- \thepage\ --}
-  \renewcommand{\headrulewidth}{0pt} 
-}
-
-% This is the style for the chapter page
-\fancypagestyle{plain}{
-  \fancyhf{}
-  \fancyfoot[C]{-- \thepage\ --}
-  \renewcommand{\headrulewidth}{0pt} 
-}
-
 
 %-------------------------------------------------------------
 % FRONT-, MAIN-, BACK- MATTERS BEHAVIOUR
