@@ -1,0 +1,59 @@
+\documentclass[11pt]{wade}
+  
+\fromaddress{1 Einstein Dr\\Princeton, USA\\NJ 08540\\{\small\url{email_address@website.com}}} % Optional: on/off
+\toaddress{Isaac Newton Institute\\20 Clarkson Road\\ Cambridge, UK\\ CB3 0EH} % Optional: on/off
+
+\date{30 February, 2026} % Optional: on/off
+\subject{Re: Your Obviously Incomplete Theory Of Quantum Gravity} % Optional: on/off.
+\greeting{Dear Friend,} % Required. Opening line.
+
+\closingtag{Kind regards,} % Default: "Yours sincerely,"
+\sender{Sender M. Person} % Required. Name of the sender.
+\senderinfo{Scientist} % Optional: on/off. A designation.
+
+% Signature block (before the sender's name).
+% Optional: on/off. Usage examples:
+% \signatureblock{} % Does nothing. Same as not calling this command
+% \signatureblock{\vspace*{2.5em}} % Adds blank space above the sender's name
+% \signatureblock{\includegraphics[height=10mm]{sign.png}} % Adds an image above the sender's name
+% \signatureblock{AAA} % Adds this content as it is above the sender's name
+
+% \usepackage{tikz}
+
+\begin{document}
+
+% can add any custom header/letterhead here
+
+% \includegraphics[width=\textwidth]{../generic-media/20.png}
+% OR (for finer control)
+% \begin{tikzpicture}[remember picture, overlay]
+%   \node[anchor=north west, inner sep=0pt] 
+%     at ([xshift=4mm, yshift=-10mm]current page.north west) 
+%     {\includegraphics[width=\paperwidth]{../generic-media/20.png}};
+% \end{tikzpicture}
+% \vspace*{5mm}
+
+% display the opening elements: addresses, subject, date, etc.
+% \printopening
+\printopening[leftright]
+% \printopening[left] % Default
+% \printopening[min]
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+% And end by displaying the closing lines & a pre-defined signature.
+\printclosing
+
+% Post scriptum notes can also be added at the end.
+\vspace*{1.15em}
+P.S. Nothing useful here, but make sure you read it.
+
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass[11pt]{hilbert}
+
+\usepackage{lipsum}
+\input{additional/metadata.tex}
+
+\begin{document}
+
+\frontmatter
+  \halftitlepage[Optional text instead of the Title]
+  \input{additional/fulltitle}
+  \input{additional/copyright}
+  \input{additional/dedication}
+  \tableofcontents
+  \pagestyle{fancy-front}
+  \input{additional/foreword}
+  \input{additional/preface}
+
+\mainmatter
+  \input{chapters/sunflower.tex}
+  \blankpage[With a custom `page left blank' message]
+  \input{chapters/greektoys.tex}
+  \blankpage[With a custom `page left blank' message]
+  \input{chapters/rockyroad.tex}
+
+\backmatter
+  \input{additional/acknowledgements.tex}
+  \input{additional/aboutauthor.tex}
+
+\end{document}
