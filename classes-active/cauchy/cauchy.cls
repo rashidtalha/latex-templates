@@ -1,17 +1,11 @@
 %------------------------------------------------------------
-% GENERAL HANDY PACKAGES (MUST BE LOADED BEFORE THE BASE CLASS)
-%------------------------------------------------------------
-\RequirePackage{etoolbox} % lots of powerful macros
-\RequirePackage{xparse} % lots of powerful macros
-\RequirePackage{calc} % for various calculations
-
-%------------------------------------------------------------
 % INITIALIZING & HANDLING CLASS OPTIONS
 %------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cauchy}[2022/12/20 A simple article class for maths and physics thesis]
+% \ProvidesClass{cauchy}[2022/12/20 A simple article class for maths and physics thesis]
+\ProvidesClass{cauchy}[2026/05/03 v2 Simple article class for longer reports, theses, etc]
 
-\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} %default (in the article cls)
+\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} % default (in the article cls)
 \DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
@@ -21,6 +15,13 @@
 \ProcessOptions\relax
 
 \LoadClass{article} % built on top of the article class
+
+%------------------------------------------------------------
+% GENERAL HANDY PACKAGES
+%------------------------------------------------------------
+\RequirePackage{etoolbox} % lots of powerful macros
+\RequirePackage{xparse} % lots of powerful macros
+\RequirePackage{calc} % for various calculations
 
 %------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
