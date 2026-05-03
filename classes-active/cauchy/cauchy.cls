@@ -9,28 +9,42 @@
 \DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
-\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}} % default (in the article cls)
+\DeclareOption{fleqn}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{leqno}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption*{\ClassError{cauchy}{Unknown Option: '\CurrentOption'}{}}
 
-\DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
+% Indentation options
+\def\@@docindent{}
+\DeclareOption{indent}{\def\@@docindent{indent}}
+\DeclareOption{noindent}{\def\@@docindent{}} % this is the default option
+
 \ProcessOptions\relax
-
-\LoadClass{article} % built on top of the article class
+\LoadClass{article} % Base class: article
 
 %------------------------------------------------------------
 % GENERAL HANDY PACKAGES
 %------------------------------------------------------------
-\RequirePackage{etoolbox} % lots of powerful macros
-\RequirePackage{xparse} % lots of powerful macros
-\RequirePackage{calc} % for various calculations
+\RequirePackage{xparse}
+\RequirePackage[strict]{changepage}
+\RequirePackage{etoolbox}
+% \RequirePackage{calc}
 
 %------------------------------------------------------------
-% STANDARD PAGE LAYOUTS
+% STANDARD PAGE LAYOUT
 %------------------------------------------------------------
-\RequirePackage[a4paper]{geometry}
-  \geometry{nomarginpar}
-  \geometry{includeall}
-  \geometry{top=14mm, bottom=22mm, left=29mm, right=29mm}
-  \geometry{headheight=7mm, headsep=6mm, footskip=9mm}
+\RequirePackage[
+  a4paper,
+  nomarginpar,
+  includeall,
+  top=14mm,
+  bottom=22mm,
+  left=29mm,
+  right=29mm,
+  headheight=7mm,
+  headsep=6mm,
+  footskip=9mm,
+  ]{geometry}
 
 %------------------------------------------------------------
 % GLOBAL TYPOGRAPHY
@@ -39,29 +53,11 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage{inconsolata}
+\RequirePackage[\@@docindent]{parskip}
 \RequirePackage{setspace}
-\RequirePackage{parskip}
 \RequirePackage{microtype}
 
-%------------------------------------------------------------
-% CLASS WIDE COMMON SETUP: DOCUMENT INFORMATION COMMANDS
-%------------------------------------------------------------
-\DeclareDocumentCommand{\title}{om}{
-  \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
-  \newcommand{\utitle}{#2}
-}
-\DeclareDocumentCommand{\subtitle}{m}{
-  \newcommand{\usubtitle}{#1}
-}
-\DeclareDocumentCommand{\author}{m}{
-  \newcommand{\uauthor}{#1}
-}
-\DeclareDocumentCommand{\affiliation}{m}{
-  \newcommand{\uaffiliation}{#1}
-}
-\DeclareDocumentCommand{\date}{m}{
-  \newcommand{\udate}{#1}
-}
+\setstretch{1.1} % increased line spacing
 
 %------------------------------------------------------------
 % COLOURS
@@ -79,61 +75,61 @@
 \definecolor{truegreen}{RGB}{0,102,0}
 
 %------------------------------------------------------------
-% HEADER & FOOTER
+% CLASS WIDE COMMON SETUP: DOCUMENT INFORMATION COMMANDS
 %------------------------------------------------------------
-\RequirePackage{fancyhdr}
-  \pagestyle{fancy}
+\DeclareDocumentCommand{\title}{om}{
+  \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
+  \newcommand{\utitle}{#2}
+  \renewcommand{\@title}{#2}
+}
 
-  \renewcommand{\sectionmark}[1]{\markright{{#1}}}
-  \renewcommand{\subsectionmark}[1]{}
-  
-  % Header-Footer style for the blank page
-  \fancypagestyle{fancy-blank}{
-    \fancyhf{}
-    \renewcommand{\headrulewidth}{0pt}
-  }
-
-  % Header-Footer style for the frontmatter pages
-  \fancypagestyle{fancy-front}{
-    \fancyhf{}
-    \fancyfoot[C]{-- \thepage\ --}
-    \renewcommand{\headrulewidth}{0pt}
-  }
-
-  % Header-Footer style with chapter heading
-  \fancypagestyle{fancy-general}{
-    \fancyhf{}
-    \fancyhead[C]{\rightmark}
-    \fancyfoot[C]{-- \thepage\ --}
-    \renewcommand{\headrulewidth}{0pt}
-  }
-
-% Activating the default header-footer style
-\pagestyle{fancy-general}
-
-%------------------------------------------------------------
-% GLOBAL SNIPPETS
-%------------------------------------------------------------
-\RequirePackage[strict]{changepage}
-
-\DeclareDocumentCommand{\newthought}{m}{{\scshape#1}}
-
-\renewenvironment{quote}
-  {\begin{adjustwidth}{20mm}{20mm}}{\end{adjustwidth}}
-\newenvironment{widetext}
-  {\begin{adjustwidth}{-12mm}{-12mm}}{\end{adjustwidth}}
+\DeclareDocumentCommand{\author}{m}{
+  \newcommand{\uauthor}{#1}
+  \renewcommand{\@author}{#1}
+}
 
 %------------------------------------------------------------
 % MAIN TITLE DESIGN & ABSTRACT
 %------------------------------------------------------------
-\renewcommand{\maketitle}{}
+\renewcommand{\maketitle}{} % the title page is given separately
 
 \renewenvironment{abstract}
-  {\begin{adjustwidth}{10mm}{10mm}}
+  {\begin{adjustwidth}{11mm}{11mm}}
   {\vspace*{0.5em}\end{adjustwidth}}
 
 %------------------------------------------------------------
-% HEADINGS: SECTIONS & SUBSECTIONS
+% HEADER & FOOTER
+%------------------------------------------------------------
+\RequirePackage{fancyhdr}
+\renewcommand{\sectionmark}[1]{\markright{{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+
+% Header-Footer style for the frontmatter and first pages
+\fancypagestyle{hf-front}{
+  \fancyhf{}
+  \fancyfoot[C]{-- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Header-Footer style with chapter heading
+\fancypagestyle{hf-general}{
+  \fancyhf{}
+  \fancyhead[C]{\rightmark}
+  \fancyfoot[C]{-- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Activating the default header-footer style
+\pagestyle{hf-general}
+
+%------------------------------------------------------------
+% TABLE OF CONTENTS
+%------------------------------------------------------------
+\RequirePackage{etoc}
+\etocsettocdepth{subsection}
+
+%------------------------------------------------------------
+% HEADINGS: SECTIONS, SUBSECTIONS, ...
 %------------------------------------------------------------
 \RequirePackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
@@ -144,12 +140,12 @@
 
 \newcommand\chaptername{Chapter}
 \titleformat{\section}[display]
-  {\thispagestyle{fancy-front}\vspace*{9mm}\normalfont\Large\bfseries}
+  {\thispagestyle{hf-front}\vspace*{6mm}\normalfont\Large\bfseries}
   {\chaptername~\thetitle}
-  {12mm}
+  {10mm}
   {\huge}
 
-\titlespacing*{\section}{0mm}{0mm}{30mm}
+\titlespacing*{\section}{0mm}{0mm}{22mm}
 
 \titleformat{\subsection}[hang]
   {\Large\bfseries}{\thetitle~}
@@ -166,56 +162,42 @@
 }
 
 %------------------------------------------------------------
-% HYPERLINKS
+% FRONT-, MAIN-, BACK- MATTERS BEHAVIOUR (CUSTOM)
 %------------------------------------------------------------
-\RequirePackage{hyperref}
-  \hypersetup{
-    colorlinks=true,
-    linktoc=all,
-    citecolor=crimson,
-    linkcolor=teal,
-    filecolor=teal,
-    urlcolor=teal
-  }
-
-%------------------------------------------------------------
-% MISC USEFUL BITS
-%------------------------------------------------------------
-\bibliographystyle{naturemag}
-\usepackage[square,numbers,comma,sort&compress]{natbib}
-\renewcommand{\refname}{Bibliography}
-
-\RequirePackage[nottoc]{tocbibind}
-\let\openbox\relax
-
 \newcommand{\frontmatter}{
-\pagestyle{fancy-front}
+\pagestyle{hf-front}
 \pagenumbering{roman}}
 
 \newcommand{\mainmatter}{
 \setcounter{page}{1}
-\pagestyle{fancy-general}
+\pagestyle{hf-general}
 \pagenumbering{arabic}
 \clearpage}
 
 \newcommand{\backmatter}{
-\pagestyle{fancy-blank}
+\pagestyle{hf-front}
 \clearpage}
 
-% \onehalfspacing
-\setstretch{1.15}
+%------------------------------------------------------------
+% BIBLIOGRAPHY/REFERENCES
+%------------------------------------------------------------
+\RequirePackage[square,numbers,comma,sort&compress]{natbib}
+\bibliographystyle{naturemag}
+\let\openbox\relax
+
+\renewcommand{\refname}{Bibliography}
 
 %------------------------------------------------------------
-% EXTERNAL MODIFICATIONS
+% GLOBAL SNIPPETS
 %------------------------------------------------------------
-% For highly customisable boxes
-\RequirePackage{mdframed}
-\newmdenv[hidealllines=true, backgroundcolor=lightgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
+\renewenvironment{quote}{\begin{adjustwidth}{20mm}{20mm}}{\end{adjustwidth}}
+\newenvironment{widetext}{\begin{adjustwidth}{-12mm}{-12mm}}{\end{adjustwidth}}
 
 %------------------------------------------------------------
 % THE LISTS
 %------------------------------------------------------------
 \RequirePackage{enumitem}
+
 \setlist[itemize,1]{label=$\bullet$}
 \setlist[itemize,2]{leftmargin=6mm}
 \setlist[itemize,3]{leftmargin=6mm, label=$\ast$}
@@ -223,17 +205,23 @@
 %------------------------------------------------------------
 % TABLES
 %------------------------------------------------------------
-\usepackage{booktabs,tabularx}
+\RequirePackage{booktabs,tabularx}
+
 \newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
 \newcolumntype{D}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{U}[1]{>{\raggedleft\arraybackslash}p{#1}} % R with custom width
+\newcolumntype{V}[1]{>{\raggedright\arraybackslash}p{#1}} % L with custom width
+
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 %------------------------------------------------------------
 % CAPTIONS
 %------------------------------------------------------------
 \RequirePackage[font=small,labelfont=bf,labelsep=endash]{caption}
+
 \DeclareCaptionStyle{widefigure}{font=small,labelfont=bf,labelsep=endash}
 \DeclareCaptionStyle{margintable}{font=small,labelfont=bf,labelsep=endash}
 \DeclareCaptionStyle{widetable}{font=small,labelfont=bf,labelsep=endash}
@@ -242,35 +230,26 @@
 \DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
 
 %------------------------------------------------------------
+% HYPERLINKS
+%------------------------------------------------------------
+\RequirePackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linktoc=all,
+  allcolors=trueblue,
+  linkcolor=crimson,
+  citecolor=trueblue,
+  urlcolor=crimson,
+}
+
+%------------------------------------------------------------
 % FOR MORE COMPATABILITY WITH SALAM.CLS
 %------------------------------------------------------------
+\RequirePackage{mdframed}
+\newmdenv[hidealllines=true, backgroundcolor=lightgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
+
 \RequirePackage{sidenotes}
 \let\sidenote\footnote
 \let\margintoc\relax
 \DeclareDocumentCommand{\marginbox}{oom}{}
 \DeclareDocumentCommand{\marginnote}{omo}{}
-
-%------------------------------------------------------------
-% TABLE OF CONTENTS
-%------------------------------------------------------------
-\RequirePackage{etoc}
-\etocsettocdepth{subsection}
-\etocsettocstyle{\section*{\contentsname}\par\nobreak}{}
-
-% \newcommand \Dotfill {\leavevmode \cleaders \hb@xt@ .44em{\hss .\hss }\hfill \kern \z@}
-
-% \etocsetstyle{section}
-% {}
-% {\vspace*{0.8em}\leavevmode\leftskip 0cm\relax}
-% {\bfseries\normalsize\etocifnumbered{\makebox[7mm][l]{\etoclink{\etocthenumber.}}}{}%
-% \etocname\nobreak\hfill\nobreak%
-% \makebox[8mm][r]{\mdseries\etocpage}\par\vspace*{0.4em}}
-% {}
-
-% \etocsetstyle{subsection}
-% {}
-% {\leavevmode\leftskip 7mm\relax}
-% {\mdseries\normalsize\makebox[12mm][l]{\etoclink{\etocthenumber.}}%
-% \etocname\nobreak\hspace*{2mm}\nobreak\Dotfill\nobreak%
-% \makebox[8mm][r]{\etocpage}\par\vspace*{0.4em}}
-% {}
