@@ -20,9 +20,9 @@
 %------------------------------------------------------------
 % GENERAL HANDY PACKAGES
 %------------------------------------------------------------
-\RequirePackage{xparse}
+% \RequirePackage{xparse}
 \RequirePackage[strict]{changepage}
-% \RequirePackage{etoolbox}
+\RequirePackage{etoolbox}
 % \RequirePackage{calc}
 
 %------------------------------------------------------------
@@ -44,7 +44,7 @@
 %------------------------------------------------------------
 % GLOBAL TYPOGRAPHY
 %------------------------------------------------------------
-\RequirePackage[utf8]{inputenc}
+% \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage{setspace}
@@ -71,7 +71,7 @@
 %------------------------------------------------------------
 % CLASS WIDE COMMON SETUP: DOCUMENT INFORMATION COMMANDS
 %------------------------------------------------------------
-\newcommand{\utitle}{}
+\newcommand{\utitle}{\PackageWarning{penrose}{Title not set!}}
 \newcommand{\ushorttitle}{}
 \newcommand{\usubtitle}{}
 \newcommand{\uauthor}{}
@@ -90,13 +90,6 @@
 \DeclareDocumentCommand{\subtitle}{m}{
   \renewcommand{\usubtitle}{#1}
 }
-\DeclareDocumentCommand{\author}{m}{
-  \renewcommand{\uauthor}{#1}
-  \gdef\@author{#1}
-}
-\DeclareDocumentCommand{\affiliation}{m}{
-  \renewcommand{\uaffiliation}{#1}
-}
 
 \DeclareDocumentCommand{\date}{sm}{
   \renewcommand{\udate}{#2}
@@ -107,17 +100,106 @@
 }
 
 %------------------------------------------------------------
+% AUTHOR & AFFILIATION SYSTEM
+%------------------------------------------------------------
+\newcounter{penrose@authcount}
+\newcounter{penrose@affilcount}
+
+% Internal: render one author (name + optional superscript)
+\newcommand{\penrose@renderauth}[1]{%
+  \csuse{penrose@auth@name@#1}%
+  \ifcsempty{penrose@auth@sym@#1}{}%
+    {$^{\csuse{penrose@auth@sym@#1}}$}%
+}
+
+% Internal: render one affiliation (optional superscript + text)
+\newcommand{\penrose@renderaffil}[1]{%
+  \ifcsempty{penrose@affil@sym@#1}{}%
+    {$^{\csuse{penrose@affil@sym@#1}}$}%
+  \csuse{penrose@affil@name@#1}%
+}
+
+% Internal: full author list with Oxford comma
+\newcommand{\penrose@renderauthors}{%
+  \ifnum\thepenrose@authcount=0\relax\else
+  \ifnum\thepenrose@authcount=1\relax
+    \penrose@renderauth{1}%
+  \else
+  \ifnum\thepenrose@authcount=2\relax
+    \penrose@renderauth{1} and \penrose@renderauth{2}%
+  \else
+    \@tempcnta=1
+    \@whilenum\@tempcnta<\thepenrose@authcount\do{%
+      \penrose@renderauth{\the\@tempcnta},\space
+      \advance\@tempcnta\@ne
+    }%
+    and \penrose@renderauth{\thepenrose@authcount}%
+  \fi\fi\fi
+}
+
+% Internal: all affiliation lines (no \par after the last one)
+\newcommand{\penrose@renderaffils}{%
+  \@tempcnta=1
+  \@whilenum\@tempcnta<\thepenrose@affilcount\do{%
+    \penrose@renderaffil{\the\@tempcnta}\\
+    \advance\@tempcnta\@ne
+  }%
+  \penrose@renderaffil{\thepenrose@affilcount}\par%
+}
+
+% \author[sym]{name}
+\DeclareDocumentCommand{\author}{om}{%
+  \stepcounter{penrose@authcount}%
+  \csdef{penrose@auth@name@\thepenrose@authcount}{#2}%
+  \IfNoValueTF{#1}%
+    {\csdef{penrose@auth@sym@\thepenrose@authcount}{}}%
+    {\csdef{penrose@auth@sym@\thepenrose@authcount}{#1}}%
+  \ifnum\thepenrose@authcount=1\relax
+    \gdef\penrose@firstauthor{#2}%
+    \renewcommand{\uauthor}{#2}%
+    \gdef\@author{#2}%
+  \else
+    \renewcommand{\uauthor}{\penrose@firstauthor\ et al.}%
+  \fi
+}
+
+% \affiliation[sym]{text}
+\DeclareDocumentCommand{\affiliation}{om}{%
+  \stepcounter{penrose@affilcount}%
+  \csdef{penrose@affil@name@\thepenrose@affilcount}{#2}%
+  \IfNoValueTF{#1}%
+    {\csdef{penrose@affil@sym@\thepenrose@affilcount}{}}%
+    {\csdef{penrose@affil@sym@\thepenrose@affilcount}{#1}}%
+}
+
+%------------------------------------------------------------
 % MAIN TITLE DESIGN & ABSTRACT
 %------------------------------------------------------------
-\renewcommand{\maketitle}{
+% \renewcommand{\maketitle}{
+%   \begingroup
+%   \thispagestyle{hf-first}
+%   \begin{adjustwidth}{-13mm}{-13mm}
+%     \centering
+%     {\Large\bfseries\utitle\par}\vspace*{0.2em}
+%     {\large\usubtitle\par}\vspace*{0.7em}
+%     {\uauthor\par}
+%     {\itshape\uaffiliation\par}
+%     \@dateline\vspace*{0.5em}
+%   \end{adjustwidth}
+%   \endgroup
+% }
+
+\renewcommand{\maketitle}{%
   \begingroup
   \thispagestyle{hf-first}
   \begin{adjustwidth}{-13mm}{-13mm}
     \centering
     {\Large\bfseries\utitle\par}\vspace*{0.2em}
     {\large\usubtitle\par}\vspace*{0.7em}
-    {\uauthor\par}
-    {\itshape\uaffiliation\par}
+    {\penrose@renderauthors\par}%
+    \ifnum\thepenrose@affilcount>0\relax
+      {\itshape\penrose@renderaffils\par}%
+    \fi
     \@dateline\vspace*{0.5em}
   \end{adjustwidth}
   \endgroup
