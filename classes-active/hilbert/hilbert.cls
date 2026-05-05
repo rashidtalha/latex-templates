@@ -77,17 +77,17 @@
 %------------------------------------------------------------
 % COLOURS
 %------------------------------------------------------------
-\RequirePackage{xcolor}
-\definecolor{lightgray}{RGB}{211,211,211}
-\definecolor{darkgray}{RGB}{64,64,79}
-\definecolor{gold}{RGB}{255,204,0}
-\definecolor{orange}{RGB}{255,103,0}
-\definecolor{red}{RGB}{255,0,0}
-\definecolor{pink}{RGB}{255,182,193}
-\definecolor{crimson}{RGB}{211,0,63}
-\definecolor{trueblue}{RGB}{0,47,167}
+\usepackage{xcolor}
+\definecolor{alertred}{RGB}{204, 37, 41}
+\definecolor{linkblue}{RGB}{0, 86, 179}
+\definecolor{citegreen}{RGB}{34, 139, 34}
 \definecolor{teal}{RGB}{0,128,128}
-\definecolor{truegreen}{RGB}{0,102,0}
+\definecolor{crimson}{RGB}{153, 0, 0}
+\definecolor{softazure}{RGB}{52, 152, 219}
+\definecolor{burntorange}{RGB}{230, 126, 34}
+\definecolor{amethyst}{RGB}{155, 89, 182}
+\definecolor{slategray}{RGB}{127, 140, 141}
+\definecolor{boxgray}{RGB}{233, 233, 233}
 
 %-------------------------------------------------------------
 % DOCUMENT INFORMATION COMMANDS
@@ -110,19 +110,19 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
-\fancypagestyle{fancy-front}{
+\fancypagestyle{hf-front}{
   \fancyhf{}
   \fancyfoot[C]{-- \thepage\ --}
   \renewcommand{\headrulewidth}{0pt} 
 }
-\fancypagestyle{fancy-main}{
+\fancypagestyle{hf-main}{
   \fancyhf{}
   \fancyhead[CO]{{\small\scshape\leftmark}}
   \fancyhead[CE]{{\small\scshape\ushorttitle}}
   \fancyfoot[C]{-- \thepage\ --}
   \renewcommand{\headrulewidth}{0pt}
 }
-\fancypagestyle{fancy-back}{
+\fancypagestyle{hf-back}{
   \fancyhf{}
   \fancyhead[CO]{{\small\scshape\leftmark}}
   \fancyhead[CE]{{\small\scshape\ushorttitle}}
@@ -207,7 +207,7 @@
 \renewcommand{\mainmatter}{
   \oldmainmatter % Call the old command
   \@openrighttrue
-  \pagestyle{fancy-main}
+  \pagestyle{hf-main}
 }
 
 % Back matter
@@ -215,7 +215,7 @@
 \renewcommand{\backmatter}{
   \oldbackmatter % Call the old command
   \@openrightfalse
-  \pagestyle{fancy-back}
+  \pagestyle{hf-back}
 }
 
 \pagestyle{empty}
@@ -272,5 +272,5 @@
 \hypersetup{
   colorlinks=true,
   linktoc=all,
-  allcolors=trueblue,
+  allcolors=crimson,
 }
