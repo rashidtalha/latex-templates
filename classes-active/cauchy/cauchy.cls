@@ -25,7 +25,7 @@
 %------------------------------------------------------------
 % GENERAL HANDY PACKAGES
 %------------------------------------------------------------
-\RequirePackage{xparse}
+% \RequirePackage{xparse}
 \RequirePackage[strict]{changepage}
 \RequirePackage{etoolbox}
 % \RequirePackage{calc}
@@ -49,7 +49,7 @@
 %------------------------------------------------------------
 % GLOBAL TYPOGRAPHY
 %------------------------------------------------------------
-\RequirePackage[utf8]{inputenc}
+% \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage{inconsolata}
@@ -62,17 +62,17 @@
 %------------------------------------------------------------
 % COLOURS
 %------------------------------------------------------------
-\RequirePackage{xcolor}
-\definecolor{lightgray}{RGB}{211,211,211}
-\definecolor{darkgray}{RGB}{64,64,79}
-\definecolor{gold}{RGB}{255,204,0}
-\definecolor{orange}{RGB}{255,103,0}
-\definecolor{red}{RGB}{255,0,0}
-\definecolor{pink}{RGB}{255,182,193}
-\definecolor{crimson}{RGB}{211,0,63}
-\definecolor{trueblue}{RGB}{0,47,167}
+\usepackage{xcolor}
+\definecolor{alertred}{RGB}{204, 37, 41}
+\definecolor{linkblue}{RGB}{0, 86, 179}
+\definecolor{citegreen}{RGB}{34, 139, 34}
 \definecolor{teal}{RGB}{0,128,128}
-\definecolor{truegreen}{RGB}{0,102,0}
+\definecolor{crimson}{RGB}{153, 0, 0}
+\definecolor{softazure}{RGB}{52, 152, 219}
+\definecolor{burntorange}{RGB}{230, 126, 34}
+\definecolor{amethyst}{RGB}{155, 89, 182}
+\definecolor{slategray}{RGB}{127, 140, 141}
+\definecolor{boxgray}{RGB}{233, 233, 233}
 
 %------------------------------------------------------------
 % CLASS WIDE COMMON SETUP: DOCUMENT INFORMATION COMMANDS
@@ -162,21 +162,24 @@
 }
 
 %------------------------------------------------------------
-% FRONT-, MAIN-, BACK- MATTERS BEHAVIOUR (CUSTOM)
+% FRONT-, MAIN-, BACK- MATTERS BEHAVIOUR
 %------------------------------------------------------------
 \newcommand{\frontmatter}{
-\pagestyle{hf-front}
-\pagenumbering{roman}}
+  \pagestyle{hf-front}
+  \pagenumbering{roman}
+}
 
 \newcommand{\mainmatter}{
-\setcounter{page}{1}
-\pagestyle{hf-general}
-\pagenumbering{arabic}
-\clearpage}
+  \setcounter{page}{1}
+  \pagestyle{hf-general}
+  \pagenumbering{arabic}
+  \clearpage
+}
 
 \newcommand{\backmatter}{
-\pagestyle{hf-front}
-\clearpage}
+  \pagestyle{hf-front}
+  \clearpage
+}
 
 %------------------------------------------------------------
 % BIBLIOGRAPHY/REFERENCES
@@ -236,20 +239,11 @@
 \hypersetup{
   colorlinks=true,
   linktoc=all,
-  allcolors=trueblue,
-  linkcolor=crimson,
-  citecolor=trueblue,
-  urlcolor=crimson,
+  allcolors=linkblue,
 }
 
 %------------------------------------------------------------
-% FOR MORE COMPATABILITY WITH SALAM.CLS
+% FANCY BOXES
 %------------------------------------------------------------
 \RequirePackage{mdframed}
-\newmdenv[hidealllines=true, backgroundcolor=lightgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
-
-\RequirePackage{sidenotes}
-\let\sidenote\footnote
-\let\margintoc\relax
-\DeclareDocumentCommand{\marginbox}{oom}{}
-\DeclareDocumentCommand{\marginnote}{omo}{}
+\newmdenv[hidealllines=true, backgroundcolor=boxgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
