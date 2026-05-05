@@ -56,17 +56,17 @@
 %------------------------------------------------------------
 % COLOURS
 %------------------------------------------------------------
-\RequirePackage{xcolor}
-\definecolor{lightgray}{RGB}{211,211,211}
-\definecolor{darkgray}{RGB}{64,64,79}
-\definecolor{gold}{RGB}{255,204,0}
-\definecolor{orange}{RGB}{255,103,0}
-\definecolor{red}{RGB}{255,0,0}
-\definecolor{pink}{RGB}{255,182,193}
-\definecolor{crimson}{RGB}{211,0,63}
-\definecolor{trueblue}{RGB}{0,47,167}
+\usepackage{xcolor}
+\definecolor{alertred}{RGB}{204, 37, 41}
+\definecolor{linkblue}{RGB}{0, 86, 179}
+\definecolor{citegreen}{RGB}{34, 139, 34}
 \definecolor{teal}{RGB}{0,128,128}
-\definecolor{truegreen}{RGB}{0,102,0}
+\definecolor{crimson}{RGB}{153, 0, 0}
+\definecolor{softazure}{RGB}{52, 152, 219}
+\definecolor{burntorange}{RGB}{230, 126, 34}
+\definecolor{amethyst}{RGB}{155, 89, 182}
+\definecolor{slategray}{RGB}{127, 140, 141}
+\definecolor{boxgray}{RGB}{233, 233, 233}
 
 %------------------------------------------------------------
 % CLASS WIDE COMMON SETUP: DOCUMENT INFORMATION COMMANDS
@@ -175,20 +175,6 @@
 %------------------------------------------------------------
 % MAIN TITLE DESIGN & ABSTRACT
 %------------------------------------------------------------
-% \renewcommand{\maketitle}{
-%   \begingroup
-%   \thispagestyle{hf-first}
-%   \begin{adjustwidth}{-13mm}{-13mm}
-%     \centering
-%     {\Large\bfseries\utitle\par}\vspace*{0.2em}
-%     {\large\usubtitle\par}\vspace*{0.7em}
-%     {\uauthor\par}
-%     {\itshape\uaffiliation\par}
-%     \@dateline\vspace*{0.5em}
-%   \end{adjustwidth}
-%   \endgroup
-% }
-
 \renewcommand{\maketitle}{%
   \begingroup
   \thispagestyle{hf-first}
@@ -287,20 +273,11 @@
 \hypersetup{
   colorlinks=true,
   linktoc=all,
-  allcolors=trueblue,
-  linkcolor=crimson,
-  citecolor=trueblue,
-  urlcolor=crimson,
+  allcolors=linkblue,
 }
 
 %------------------------------------------------------------
-% FOR MORE COMPATIBILITY WITH SALAM.CLS / DEPRECATED
+% FANCY BOXES
 %------------------------------------------------------------
 \RequirePackage{mdframed}
-\newmdenv[hidealllines=true, backgroundcolor=lightgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
-
-\RequirePackage{sidenotes}
-\let\sidenote\footnote
-\let\margintoc\relax
-\DeclareDocumentCommand{\marginbox}{oom}{}
-\DeclareDocumentCommand{\marginnote}{omo}{}
+\newmdenv[hidealllines=true, backgroundcolor=boxgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
