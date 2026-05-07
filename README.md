@@ -7,38 +7,37 @@ The 'design philosophy' is that the user should retain most of the control, but 
 
 ### Active Classes:
 *Articles.*
-- `penrose:` An elegent but broadly applicable class for general purpose articles, essays and shorter assignments.
-- `cauchy:` Clutter-free, simple and extendible. For lecture notes, general purpose theses and long-form essays.
+- `penrose`: Broadly applicable, easily tweak-able, modern extension of the standard article class for general purpose articles, essays, assignments, and so on.
+- `cauchy`: Clutter-free, simple and extendible. For lecture notes, theses and longer reports.
 
-*Books.*
+*Books & Letters.*
 - `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy).
-
-*Letters.*
 - `wade`: For simple elegant letters.
 
 ### Header/Macro Files:
-- `mpt-core`: Description
-- `mpt-ext`: Description
-- `mpt-thm`: Description
+*Maths & Physics Tools Bundle.*
+- `mpt-core`: Collection of useful mathematical commands, macros, etc.
+- `mpt-ext`: Extension to mpt-core.
+- `mpt-thm`: Theorem-like environments and helper commands.
 
 ### Older Files/Project:
 *Inactive (for now).*
-- `salam:` Inspired by certain OUP books, but made for articles and handouts.
-- `dirac`: For beautiful and sophisticated books. Primarily academic. Highly customisable.
-- `witten`: A unique two-column landscape layout for books and notes. Primarily academic. Highly customisable.
+- `salam`: Inspired by certain OUP books, but made for articles and handouts.
+- `dirac`: For sophisticated, primarily academic, books.
+- `witten`: A unique two-column landscape layout for books and notes. Primarily academic.
 
 *Deprecated.*
-- `mathsphystools:` A collection of macros and redefinitions to be used for all things maths and physics.
-- `thmstyles:` Predefined theorem, definition and remark-like environments. For coherent styles and consistent naming.
-- `basicstyles:` What does this do?
-- `curie:` A multifunctional class for reports and longer assignments.
+- `curie`: A multifunctional class for reports and longer assignments.
+- `mathsphystools`: A collection of macros and redefinitions to be used for all things maths and physics.
+- `thmstyles`: Predefined theorem, definition and remark-like environments. For coherent styles and consistent naming.
+- `basicstyles`: What does this do?
 
 *One-off project.*
-- `cambridge-schedules`: An attempt at re-creating the Cambridge Maths Tripos Schedules PDF in Latex. Keeping it easy to use.
+- `cambridge-schedules`: An attempt at re-creating the Cambridge Maths Tripos Schedules PDF in Latex.
 
 ---
 
 ### To-Do List:
-- Improve the current sample documents for better documentation
-- Eventually remove the deprecated files
-- Add examples of real-world usage
+- Remove the deprecated files (eventually).
+- Improve the current sample documents for better documentation.
+- Add examples of real-world usage.
