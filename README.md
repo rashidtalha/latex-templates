@@ -1,46 +1,44 @@
-# Latex Templates
+Latex Templates
+===============
 
-**Note: Re-organising and updating this repository for coherence. It will be tagged soon.**
+A handmade collection of latex templates, classes and style files that I regularly use. I don't expect any major updates to the class files, but the custom headers (`mpt-core.sty`, `mpt-ext.sty` and `mpt-thm.sty`) will slowly keep evolving.
 
-A (growing) handmade collection of latex templates, classes and style files.
+The 'design philosophy' is that the user should retain most of the control, but require minimal customisation.
+
+### Active Classes:
+*Articles.*
+- `penrose:` An elegent but broadly applicable class for general purpose articles, essays and shorter assignments.
+- `cauchy:` Clutter-free, simple and extendible. For lecture notes, general purpose theses and long-form essays.
+
+*Books.*
+- `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy).
+
+*Letters.*
+- `wade`: For simple elegant letters.
+
+### Header/Macro Files:
+- `mpt-core`: Description
+- `mpt-ext`: Description
+- `mpt-thm`: Description
+
+### Older Files/Project:
+*Inactive (for now).*
+- `salam:` Inspired by certain OUP books, but made for articles and handouts.
+- `dirac`: For beautiful and sophisticated books. Primarily academic. Highly customisable.
+- `witten`: A unique two-column landscape layout for books and notes. Primarily academic. Highly customisable.
+
+*Deprecated.*
+- `mathsphystools:` A collection of macros and redefinitions to be used for all things maths and physics.
+- `thmstyles:` Predefined theorem, definition and remark-like environments. For coherent styles and consistent naming.
+- `basicstyles:` What does this do?
+- `curie:` A multifunctional class for reports and longer assignments.
+
+*One-off project.*
+- `cambridge-schedules`: An attempt at re-creating the Cambridge Maths Tripos Schedules PDF in Latex. Keeping it easy to use.
 
 ---
 
 ### To-Do List:
-
-+ Update the README file (!)
-+ Add some documentation
-+ Update cauchy, curie and salam to support all the minor upgrades made to penrose
-
----
-
-### Currently Active Projects:
-*Articles, essays, short reports.*
-+ `penrose:` An elegent but broadly applicable class for general purpose articles, essays and shorter assignments.
-+ `salam:` Inspired by certain OUP books, but made for articles and handouts.
-+ `curie:` A multifunctional class for reports and longer assignments.
-
-*Longer reports.*
-+ `cauchy:` Clutter-free, simple and extendible. For lecture notes, general purpose theses and long-form essays.
-
-*Books.*
-+ `witten`: A unique two-column landscape layout for books and notes. Primarily academic. Highly customisable.
-+ `dirac`: For beautiful and sophisticated books. Primarily academic. Highly customisable.
-+ `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy).
-
-*Letters.*
-+ `wade`: For simple yet elegant letters.
-
-
-### Custom Header Files:
-Based on how the author structures their documents.
-+ `mathsphystools:` A collection of macros and redefinitions to be used for all things maths and physics.
-+ `thmstyles:` Predefined theorem, definition and remark-like environments. For coherent styles and consistent naming.
-+ `basicstyles:` What does this do?
-
-### Outdated/Broken Projects:
-The following are broken or outdated for various reasons. Either I have simply not updated them in a while, or their dependencies have been updated and no longer backwards compatible, or there are major unchecked bugs, or they are simply incomplete, etc.
-+ `noether`: For assignments, exercises and example sheets.
-
-### One-Off Projects:
-+ `cambridge-schedules`: An attempt at re-creating the Cambridge Maths Tripos Schedules PDF in Latex. Keeping it easy to use.
+- Improve the current sample documents for better documentation
+- Eventually remove the deprecated files
+- Add examples of real-world usage
