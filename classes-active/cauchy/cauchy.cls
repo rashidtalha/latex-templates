@@ -123,6 +123,30 @@
 \pagestyle{hf-general}
 
 %------------------------------------------------------------
+% FOOTNOTE HANDLING
+%------------------------------------------------------------
+\renewcommand{\@makefntext}[1]{%
+  \setlength{\parindent}{1.5em}\parskip\z@%
+  \let\nextpar\relax%
+  \everypar{%
+    \hangindent=1.5em\hangafter=1\nextpar%
+    \gdef\nextpar{\hspace{\parindent}}%
+  }%
+  \noindent\hb@xt@1.5em{\hss\@makefnmark\,}#1
+}
+
+\newcommand{\ufootnote}[2][]{
+  \begingroup
+    \renewcommand\thefootnote{}%
+    \def\@makefnmark{$^{#1}$}%
+    \let\Hy@raisedlink\@gobble%
+    \let\hyper@anchorstart\@gobble%
+    \let\hyper@anchorend\@gobble%
+    \footnotetext{#2}%
+  \endgroup
+}
+
+%------------------------------------------------------------
 % TABLE OF CONTENTS
 %------------------------------------------------------------
 \RequirePackage{etoc}
@@ -233,6 +257,12 @@
 \DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
 
 %------------------------------------------------------------
+% FANCY BOXES
+%------------------------------------------------------------
+\RequirePackage{mdframed}
+\newmdenv[hidealllines=true, backgroundcolor=boxgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
+
+%------------------------------------------------------------
 % HYPERLINKS
 %------------------------------------------------------------
 \RequirePackage{hyperref}
@@ -241,9 +271,3 @@
   linktoc=all,
   allcolors=linkblue,
 }
-
-%------------------------------------------------------------
-% FANCY BOXES
-%------------------------------------------------------------
-\RequirePackage{mdframed}
-\newmdenv[hidealllines=true, backgroundcolor=boxgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}

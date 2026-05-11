@@ -105,21 +105,21 @@
 \newcounter{penrose@authcount}
 \newcounter{penrose@affilcount}
 
-% Internal: render one author (name + optional superscript)
+% Internal: render one author
 \newcommand{\penrose@renderauth}[1]{%
   \csuse{penrose@auth@name@#1}%
   \ifcsempty{penrose@auth@sym@#1}{}%
     {$^{\csuse{penrose@auth@sym@#1}}$}%
 }
 
-% Internal: render one affiliation (optional superscript + text)
+% Internal: render one affiliation
 \newcommand{\penrose@renderaffil}[1]{%
   \ifcsempty{penrose@affil@sym@#1}{}%
     {$^{\csuse{penrose@affil@sym@#1}}$}%
   \csuse{penrose@affil@name@#1}%
 }
 
-% Internal: full author list with Oxford comma
+% Internal: full author list with oxford comma
 \newcommand{\penrose@renderauthors}{%
   \ifnum\thepenrose@authcount=0\relax\else
   \ifnum\thepenrose@authcount=1\relax
@@ -137,7 +137,7 @@
   \fi\fi\fi
 }
 
-% Internal: all affiliation lines (no \par after the last one)
+% Internal: all affiliation lines
 \newcommand{\penrose@renderaffils}{%
   \@tempcnta=1
   \@whilenum\@tempcnta<\thepenrose@affilcount\do{%
@@ -218,6 +218,30 @@
 \pagestyle{hf-general}
 
 %------------------------------------------------------------
+% FOOTNOTE HANDLING
+%------------------------------------------------------------
+\renewcommand{\@makefntext}[1]{%
+  \setlength{\parindent}{1.5em}\parskip\z@%
+  \let\nextpar\relax%
+  \everypar{%
+    \hangindent=1.5em\hangafter=1\nextpar%
+    \gdef\nextpar{\hspace{\parindent}}%
+  }%
+  \noindent\hb@xt@1.5em{\hss\@makefnmark\,}#1
+}
+
+\newcommand{\ufootnote}[2][]{
+  \begingroup
+    \renewcommand\thefootnote{}%
+    \def\@makefnmark{$^{#1}$}%
+    \let\Hy@raisedlink\@gobble%
+    \let\hyper@anchorstart\@gobble%
+    \let\hyper@anchorend\@gobble%
+    \footnotetext{#2}%
+  \endgroup
+}
+
+%------------------------------------------------------------
 % BIBLIOGRAPHY/REFERENCES
 %------------------------------------------------------------
 \RequirePackage[square,numbers,comma,sort&compress]{natbib}
@@ -225,10 +249,13 @@
 \let\openbox\relax
 
 %------------------------------------------------------------
-% GLOBAL SNIPPETS
+% ADDITIONAL ENVIRONMENTS
 %------------------------------------------------------------
 \renewenvironment{quote}{\begin{adjustwidth}{11mm}{11mm}}{\end{adjustwidth}}
 \newenvironment{widetext}{\begin{adjustwidth}{-13mm}{-13mm}}{\end{adjustwidth}}
+
+\RequirePackage{mdframed}
+\newmdenv[hidealllines=true, backgroundcolor=boxgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
 
 %------------------------------------------------------------
 % THE LISTS
@@ -275,9 +302,3 @@
   linktoc=all,
   allcolors=linkblue,
 }
-
-%------------------------------------------------------------
-% FANCY BOXES
-%------------------------------------------------------------
-\RequirePackage{mdframed}
-\newmdenv[hidealllines=true, backgroundcolor=boxgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
