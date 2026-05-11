@@ -1,6 +1,5 @@
-\ProvidesPackage{mpt-core}[2025/11/26 v2.0 Collection of useful mathematical commands, macros, etc for MathsPhysicsTools]
+\ProvidesPackage{mpt-core}[2026/05/07 v3 Collection of useful mathematical commands, macros, etc]
 
-% \RequirePackage{xparse}
 \RequirePackage{mathtools}
 \RequirePackage{amssymb}
 \RequirePackage{esint}
@@ -10,7 +9,7 @@
 %------------------------------------------------------------
 % SETS, GROUPS, RINGS, FIELDS, ALGEBRAS
 %------------------------------------------------------------
-\DeclareMathOperator{\Po}{\mathcal{P}} % Powerset
+\newcommand{\Po}{\operatorname{\mathcal{P}}} % Powerset
 
 % Number sets
 \let\P\relax
@@ -20,10 +19,10 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\C}{\mathbb{C}}
-\newcommand{\F}{\mathbb{F}} % Finite field
+\newcommand{\F}{\mathbb{F}}
 \newcommand{\A}{\mathbb{A}}
-\newcommand{\RP}{\R{P}} % Real Projective
-\newcommand{\CP}{\R{P}} % Complex Projective
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\CP}{\mathbb{C}\mathrm{P}}
 \newcommand{\P}{\mathbb{P}}
 
 % Matrix groups
@@ -69,34 +68,34 @@
 %------------------------------------------------------------
 % FUNCTIONS
 %------------------------------------------------------------
-\DeclareMathOperator{\sech}{sech}
-\DeclareMathOperator{\cosec}{cosec}
-\DeclareMathOperator{\cosech}{cosech}
+\newcommand{\sech}{\operatorname{sech}}
+\newcommand{\cosec}{\operatorname{cosec}}
+\newcommand{\cosech}{\operatorname{cosech}}
 
 % Alternative inverse trigonometric functions
-\DeclareMathOperator{\asin}{{sin}^{-1}}
-\DeclareMathOperator{\acos}{{cos}^{-1}}
-\DeclareMathOperator{\atan}{{tan}^{-1}}
-\DeclareMathOperator{\acot}{{cot}^{-1}}
-\DeclareMathOperator{\acsc}{{csc}^{-1}}
-\DeclareMathOperator{\asec}{{sec}^{-1}}
+\newcommand{\asin}{\operatorname{sin}^{-1}}
+\newcommand{\acos}{\operatorname{cos}^{-1}}
+\newcommand{\atan}{\operatorname{tan}^{-1}}
+\newcommand{\acot}{\operatorname{cot}^{-1}}
+\newcommand{\acsc}{\operatorname{csc}^{-1}}
+\newcommand{\asec}{\operatorname{sec}^{-1}}
 
 % Alternative inverse hyperbolic functions
-\DeclareMathOperator{\asinh}{{sinh}^{-1}}
-\DeclareMathOperator{\acosh}{{cosh}^{-1}}
-\DeclareMathOperator{\atanh}{{tanh}^{-1}}
-\DeclareMathOperator{\acoth}{{coth}^{-1}}
-\DeclareMathOperator{\acsch}{{csch}^{-1}}
-\DeclareMathOperator{\asech}{{sech}^{-1}}
+\newcommand{\asinh}{\operatorname{sinh}^{-1}}
+\newcommand{\acosh}{\operatorname{cosh}^{-1}}
+\newcommand{\atanh}{\operatorname{tanh}^{-1}}
+\newcommand{\acoth}{\operatorname{coth}^{-1}}
+\newcommand{\acsch}{\operatorname{csch}^{-1}}
+\newcommand{\asech}{\operatorname{sech}^{-1}}
 
-% Logrithm
-\DeclareMathOperator{\Log}{Log} % \log, \ln already defined
-\DeclareMathOperator{\dLog}{Li_{2}} % dilogarithm
-\DeclareMathOperator{\pLog}{Li} % polylogarithm
+% Logarithm
+\newcommand{\Log}{\operatorname{Log}} % \log, \ln already defined
+\newcommand{\dLog}{\operatorname{Li}_{2}} % dilogarithm
+\newcommand{\pLog}{\operatorname{Li}} % polylogarithm
 
 % Other functions
-\DeclareMathOperator{\erf}{erf}
-\DeclareMathOperator{\erfc}{erfc}
+\newcommand{\erf}{\operatorname{erf}}
+\newcommand{\erfc}{\operatorname{erfc}}
 
 %------------------------------------------------------------
 % SYMBOLS RELATED TO GROUPS, RINGS, FIELDS, ALGEBRAS
@@ -105,9 +104,10 @@
 \newcommand{\nsubgroup}{\mathrel{\trianglelefteq}}
 \let\cyclic\gen
 
-\DeclareMathOperator{\gal}{Gal}
-\DeclareMathOperator{\fix}{Fix}
-\DeclareMathOperator{\ch}{char}
+\newcommand{\gal}{\operatorname{Gal}}
+\newcommand{\fix}{\operatorname{Fix}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\chern}{\operatorname{ch}}
 
 %------------------------------------------------------------
 % VECTORS, TOPOLOGY, GEOMETRY, ANALYSIS
@@ -115,8 +115,8 @@
 % Complex Analysis
 \let\Re\relax
 \let\Im\relax
-\DeclareMathOperator{\Re}{Re}
-\DeclareMathOperator{\Im}{Im}
+\newcommand{\Re}{\operatorname{Re}}
+\newcommand{\Im}{\operatorname{Im}}
 \newcommand{\conj}[1]{\overline{#1}}
 
 % Vectors
@@ -127,14 +127,14 @@
 % Derivatives
 \newcommand{\curl}{\nabla\times}
 \newcommand{\grad}{\nabla}
-\DeclareMathOperator{\alemb}{\square} % shortcut for the \square
+\newcommand{\alemb}{\square}
 
 % Topological Operators
 \newcommand{\interior}[1]{\mathrm{Int}_{#1}}
 \newcommand{\exterior}[1]{\mathrm{Ext}_{#1}}
 \newcommand{\closure}[1]{\mathrm{Cl}_{#1}}
 \newcommand{\frontier}[1]{\mathrm{Fr}_{#1}}
-\newcommand{\boundary}[1]{\pd_{#1}}
+\newcommand{\boundary}{\partial}
 \newcommand{\varinterior}[1]{{#1}^{\circ}}
 \newcommand{\varclosure}[1]{\overline{#1}}
 
@@ -142,48 +142,51 @@
 % OPERATORS, RELATIONS
 %------------------------------------------------------------
 % Common operators
-\renewcommand{\d}{\mathop{}\!\mathrm{d}} % upright dx
+\let\textd\d
+\renewcommand{\d}{\mathrm{d}} % upright dx
 \newcommand{\pd}{\partial} % shortcut for the \partial
-\newcommand{\dual}{\raisebox{0.5ex}{\scalebox{0.6}[0.6]{$\vee$}}} % dual
-\newcommand{\Int}{\int\limits} % integral with display limits, deprecated
-\newcommand{\compose}{\mathbin{\circ}} % composition of functions
+\newcommand{\dual}{^{\scriptscriptstyle\vee}}
+\newcommand{\hodge}{{\star}}
+\newcommand{\lied}[1]{\mathcal{L}_{#1}} % lie derivative
+\newcommand{\compose}{\circ} % composition of functions
 
 % Relations
-\newcommand{\qeq}{\stackrel{?}{=}}
+\newcommand{\qeq}{\overset{?}{=}}
 \newcommand{\isom}{\mathrel{\cong}} % isomorphism
 \newcommand{\homeo}{\mathrel{\cong}} % homeomorphism
 \newcommand{\homt}{\mathrel{\simeq}} % homotopy
 
-\DeclareMathOperator*{\res}{res} % Residue
+\newcommand{\res}{\operatorname*{res}} % Residue
+\newcommand{\colim}{\operatorname*{colim}}
 
-\DeclareMathOperator{\adj}{adj}
-\DeclareMathOperator{\Ad}{Ad}
-\DeclareMathOperator{\ad}{ad}
-\DeclareMathOperator{\Ann}{Ann}
-\DeclareMathOperator{\Arg}{Arg} % \arg already defined
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\codim}{codim}
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\convex}{conv}
-\DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Hol}{Hol}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\img}{im} % Image
-\DeclareMathOperator{\Inn}{Inn}
-\DeclareMathOperator{\lcm}{lcm}
-\DeclareMathOperator{\orb}{Orb}
-\DeclareMathOperator{\proj}{proj}
-\DeclareMathOperator{\rad}{rad}
-\DeclareMathOperator{\rank}{rank} % Rank
-\DeclareMathOperator{\Ric}{Ric}
-\DeclareMathOperator{\sign}{sgn}
-\DeclareMathOperator{\spec}{spec}
-\DeclareMathOperator{\spn}{span}
-\DeclareMathOperator{\stab}{Stab}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\Tr}{Tr} % Trace
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Arg}{\operatorname{Arg}} % \arg already defined
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\convex}{\operatorname{conv}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Hol}{\operatorname{Hol}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\img}{\operatorname{im}} % Image
+\newcommand{\Inn}{\operatorname{Inn}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\orb}{\operatorname{Orb}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\rank}{\operatorname{rank}} % Rank
+\newcommand{\Ric}{\operatorname{Ric}}
+\newcommand{\sign}{\operatorname{sgn}}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\spn}{\operatorname{span}}
+\newcommand{\stab}{\operatorname{Stab}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Tr}{\operatorname{Tr}} % Trace
 % Already defined: \dim, \ker, \det
 
 %------------------------------------------------------------
@@ -195,6 +198,7 @@
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\M}{\mathcal{M}}
+\newcommand{\Oo}{\mathcal{O}}
 
 \renewcommand{\L}{\mathcal{L}}
 \renewcommand{\H}{\mathcal{H}}
@@ -210,11 +214,10 @@
 
 \newcommand{\Der}{\mathrm{Der}}
 \newcommand{\pt}{\{\mathrm{pt}\}} % Point
-\newcommand{\vol}{\mathrm{vol}} % Volume
 
 %-------------------------------------------------------------
 % GENERAL MACROS
 %-------------------------------------------------------------
-\newcommand{\missing}[1]{{\color{red}#1}}
-\newcommand{\comment}[1]{{\color{green}#1}}
+\newcommand{\missing}[2][alertred]{{\color{#1}#2}}
+\newcommand{\comment}[2][citegreen]{{\color{#1}#2}}
 \newcommand{\keyword}[1]{\textsf{#1}}
