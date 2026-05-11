@@ -4,32 +4,32 @@
 \usepackage{mpt-thm}
 \usepackage{graphicx}
 
-%--------------------------------------
-% METADATA (all macros are optional)
-%--------------------------------------
+\begin{document}
+
+%------------ METADATA -------------
 \title[Penrose Class Demo]{The \texttt{Penrose} Class: Personalised Version of the \LaTeX\ Article Class}
 
 \subtitle{Documentation and Demonstration for \texttt{penrose.cls} Version 2.0}
 
-\author[1,2]{Rashid Talha}
+\author[*,2]{Rashid Talha}
 \author{Rashid Talha}
 \author[2]{Rashid Talha}
 % \renewcommand{\uauthor}{Manual Override for the header}
 
-\affiliation[1]{Scuola Internazionale Superiore di Studi Avanzati (SISSA), Trieste, Italy}
+\affiliation[*]{Scuola Internazionale Superiore di Studi Avanzati (SISSA), Trieste, Italy}
 \affiliation[2,\dagger]{International Centre for Theoretical Physics (ICTP), Trieste, Italy}
 
 \date*{May, 2026}
-
-\begin{document}
+%-----------------------------------
 
 \maketitle
+\ufootnote[\dagger]{abcd}
 
 \begin{abstract}
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 \end{abstract}
 
-\tableofcontents
+% \tableofcontents
 
 \section{Introduction}
 In this example document we describe how to use the \texttt{penrose} class. This is not a minimal working example, and might not cover all the features of this class. One should see the source code of this PDF for a more technical introduction. We have also used the \texttt{mpt-core} and \texttt{mpt-thm} packages written by the author to include brief samples of mathematical content. These are completely optional, and the user can use their own mathematical packages if needed.
@@ -55,12 +55,12 @@ The class extends standard tables by providing custom column types through \verb
     \toprule
     Type & Description\\
     \midrule
-    \texttt{C} & Type \texttt{X} with centre aligned text\\
-    \texttt{L} & Type \texttt{X} with left aligned text\\
-    \texttt{R} & Type \texttt{X} with right aligned text\\
-    \texttt{D\{len\}} & Type \texttt{p\{len\}} with centre aligned text\\
-    \texttt{U\{len\}} & Type \texttt{p\{len\}} with left aligned text\\
-    \texttt{V\{len\}} & Type \texttt{p\{len\}} with right aligned text\\
+    \texttt{C} & \texttt{X} with centre aligned text\\
+    \texttt{L} & \texttt{X} with left aligned text\\
+    \texttt{R} & \texttt{X} with right aligned text\\
+    \texttt{D\{len\}} & \texttt{p\{len\}} with centre aligned text\\
+    \texttt{U\{len\}} & \texttt{p\{len\}} with left aligned text\\
+    \texttt{V\{len\}} & \texttt{p\{len\}} with right aligned text\\
     \bottomrule
   \end{tabularx}
 \end{center}
@@ -111,10 +111,10 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. See figure~(\ref{fig:figname}).
 
 \section{Section Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\footnote{This is a usual footnote that leaves a mark in the main text.} Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.\ufootnote{This is a special footnote that does \emph{not} leaves a mark in the main text. It is placed using the command \texttt{ufootnote[symbol]{text}}.}
 
 \subsection{Subsection Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+Lorem\footnote{This is yet another normal footnote. Notice how the footnote counter works as expected.} ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.\ufootnote[\ddagger]{Lastly, this is again one of those \texttt{ufootnote} footnotes, but now with a custom symbol.}
 
 In case you want a wider text block. You can use the \texttt{widetext} environment.
 
@@ -128,7 +128,7 @@ In the other direction, there is a \texttt{quote} environment.
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 \end{quote}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 \begin{colbox}
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -152,7 +152,7 @@ After procrastinating for hours, I finally gave up on avoiding AI and asked Chat
 \end{center}
 
 \nocite{*}
-% \renewcommand{\refname}{Bibliography}
+% \renewcommand{\refname}{Custom Name}
 \phantomsection\addcontentsline{toc}{section}{\refname}
 {\small\bibliography{references}}
 
