@@ -7,12 +7,12 @@ The 'design philosophy' is that the user should retain most of the control, but 
 
 ### Active Classes:
 *Articles.*
-- `penrose`: Broadly applicable, easily tweak-able, modern extension of the standard article class for general purpose articles, essays, assignments, and so on.
-- `cauchy`: Clutter-free, simple and extendible. For lecture notes, theses and longer reports.
+- `penrose`: Broadly applicable, easily tweak-able, modern extension of the standard article class for general purpose articles, essays, assignments, and so on. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/penrose/main.pdf)
+- `cauchy`: Clutter-free, simple and extendible. For lecture notes, theses and longer reports. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/cauchy/main.pdf)
 
 *Books & Letters.*
-- `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy).
-- `wade`: For simple elegant letters.
+- `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy). [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/hilbert/main.pdf)
+- `wade`: For simple elegant letters. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/wade/main.pdf)
 
 ### Header/Macro Files:
 *Maths & Physics Tools Bundle.*
@@ -20,17 +20,13 @@ The 'design philosophy' is that the user should retain most of the control, but 
 - `mpt-ext`: Extension to mpt-core.
 - `mpt-thm`: Theorem-like environments and helper commands.
 
+These header files are best understood by reading through the source code. The macros/environments defined here are the ones that I frequently use in my own work, so 1) these files keep evolving, and 2) you may wish to modify them to match your own requirements.
+
 ### Older Files/Project:
 *Inactive (for now).*
 - `salam`: Inspired by certain OUP books, but made for articles and handouts.
 - `dirac`: For sophisticated, primarily academic, books.
 - `witten`: A unique two-column landscape layout for books and notes. Primarily academic.
-
-*Deprecated.*
-- `curie`: A multifunctional class for reports and longer assignments.
-- `mathsphystools`: A collection of macros and redefinitions to be used for all things maths and physics.
-- `thmstyles`: Predefined theorem, definition and remark-like environments. For coherent styles and consistent naming.
-- `basicstyles`: What does this do?
 
 *One-off project.*
 - `cambridge-schedules`: An attempt at re-creating the Cambridge Maths Tripos Schedules PDF in Latex.
@@ -38,6 +34,5 @@ The 'design philosophy' is that the user should retain most of the control, but 
 ---
 
 ### To-Do List:
-- Remove the deprecated files (eventually).
 - Improve the current sample documents for better documentation.
 - Add examples of real-world usage.
