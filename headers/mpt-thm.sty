@@ -1,154 +1,175 @@
-\ProvidesPackage{mpt-thm}[2025/11/26 v2.0 Theorem-like environments and Helper Commands for MathsPhysicsTools]
+\ProvidesPackage{mpt-thm}[2026/05/07 v3 Theorem-like environments and Helper Commands]
 
 \RequirePackage{amsthm}
 
 %------------------------------------------------------------
 % SWITCH BETWEEN SECTION-TYPE AND CHAPTER-TYPE STYLES
 %------------------------------------------------------------
-\def\@@thmtype{section}
-\DeclareOption{section}{\def\@@thmtype{section}} % default
-\DeclareOption{chapter}{\def\@@thmtype{chapter}}
-\DeclareOption{none}{\let\@@thmtype\relax}
+\def\cnt@none{none}
+\def\cnt@name{section} % default
+\DeclareOption{section}{\def\cnt@name{section}}
+\DeclareOption{chapter}{\def\cnt@name{chapter}}
+\DeclareOption{none}{\def\cnt@name{none}}
 \DeclareOption*{\OptionNotUsed}
 \ProcessOptions\relax
 
 %------------------------------------------------------------
-% SOME CUSTOM THEOREM STYLES.
+% ADDITIONAL THEOREM STYLES
 %------------------------------------------------------------
-% custom style with line-break (not numbered)
+% custom style with line-break
 \newtheoremstyle{plain-break}
   {}{}%
   {\itshape}{}%
-  {\bfseries}{.}% % Note that final punctuation is omitted.
+  {\bfseries}{.}%
   {\newline}{}
 
 \newtheoremstyle{definition-break}
   {}{}%
   {\normalfont}{}%
-  {\bfseries}{.}% % Note that final punctuation is omitted.
+  {\bfseries}{.}%
   {\newline}{}
 
+%------------------------------------------------------------
+% BASE ENVIRONMENTS FOR COUNTERS
+%------------------------------------------------------------
+\ifx\cnt@name\cnt@none
+  \theoremstyle{plain}
+  \newtheorem{nthm}{Theorem}
+  \theoremstyle{definition}
+  \newtheorem{nex}{Exercise}
+\else
+  \theoremstyle{plain}
+  \newtheorem{nthm}{Theorem}[\cnt@name]
+  \theoremstyle{definition}
+  \newtheorem{nex}{Exercise}[\cnt@name]
+\fi
 
 %------------------------------------------------------------
-% ALL STANDARD THEOREM & DEFINITION-LIKE ENVS.
+% THEOREM-LIKE
 %------------------------------------------------------------
-% Theorems-like environments (not numbered)
 \theoremstyle{plain}
-\newtheorem*{claim}{Claim}
-\newtheorem*{conjecture}{Conjecture}
-\newtheorem*{cor}{Corollary}
-\newtheorem*{lemma}{Lemma}
-\newtheorem*{prop}{Proposition}
-\newtheorem*{thm}{Theorem}
 
-% Theorems-like environments (numbered)
-\newtheorem{nthm}{Theorem}[\@@thmtype]
 \newtheorem{nprop}[nthm]{Proposition}
 \newtheorem{nlemma}[nthm]{Lemma}
 \newtheorem{ncor}[nthm]{Corollary}
 \newtheorem{nclaim}[nthm]{Claim}
 \newtheorem{nconjecture}[nthm]{Conjecture}
 
-% Definition-like environments (not numbered)
+\newtheorem*{thm}{Theorem}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem*{conjecture}{Conjecture}
+
+\theoremstyle{plain-break}
+
+\newtheorem*{bthm}{Theorem}
+\newtheorem*{bprop}{Proposition}
+\newtheorem*{blemma}{Lemma}
+\newtheorem*{bcor}{Corollary}
+\newtheorem*{bclaim}{Claim}
+\newtheorem*{bconjecture}{Conjecture}
+
+\newtheorem{nbthm}[nthm]{Theorem}
+\newtheorem{nbprop}[nthm]{Proposition}
+\newtheorem{nblemma}[nthm]{Lemma}
+\newtheorem{nbcor}[nthm]{Corollary}
+\newtheorem{nbclaim}[nthm]{Claim}
+\newtheorem{nbconjecture}[nthm]{Conjecture}
+
+%------------------------------------------------------------
+% DEFINITION-LIKE
+%------------------------------------------------------------
 \theoremstyle{definition}
-\newtheorem*{assumption}{Assumption}
-\newtheorem*{hypothesis}{Hypothesis}
+
+\newtheorem{ndfn}[nthm]{Definition}
+\newtheorem{negg}[nthm]{Example}
+\newtheorem{nremark}[nthm]{Remark}
+
+\newtheorem*{dfn}{Definition}
+\newtheorem*{egg}{Example}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition-break}
+
+\newtheorem{nbdfn}[nthm]{Definition}
+\newtheorem{nbegg}[nthm]{Example}
+\newtheorem{nbremark}[nthm]{Remark}
+
+\newtheorem*{bdfn}{Definition}
+\newtheorem*{begg}{Example}
+\newtheorem*{bremark}{Remark}
+
+%------------------------------------------------------------
+% EXERCISE-LIKE
+%------------------------------------------------------------
+\theoremstyle{definition}
+
+\newtheorem{nexercise}[nex]{Exercise}
+
+\newtheorem*{ex}{Exercise}
+\newtheorem*{exercise}{Exercise}
+
+\theoremstyle{definition-break}
+
+\newtheorem*{bex}{Exercise}
+\newtheorem*{bexercise}{Exercise}
+
+\newtheorem{nbex}[nex]{Exercise}
+\newtheorem{nbexercise}[nex]{Exercise}
+
+%------------------------------------------------------------
+% ENVIRONEMNTS WITH INDEPENDENT/NO COUNTERS
+%------------------------------------------------------------
+\theoremstyle{definition}
+
+\newtheorem{naxiom}{Axiom}
+\newtheorem{nlaw}{Law}
+\newtheorem{nnotation}{Notation}
+\newtheorem{nprinciple}{Principle}
+\newtheorem{nwarning}{Warning}
+
+\newtheorem*{axiom}{Axiom}
 \newtheorem*{law}{Law}
 \newtheorem*{notation}{Notation}
 \newtheorem*{principle}{Principle}
-\newtheorem*{remark}{Remark}
-\newtheorem*{rrule}{Rule}
 \newtheorem*{warning}{Warning}
 
-\newtheorem*{axiom}{Axiom}
-\newtheorem*{dfn}{Definition}
-\newtheorem*{egg}{Example}
-\newtheorem*{ex}{Exercise}
-\newtheorem*{exercise}{Exercise}
-\newtheorem*{problem}{Problem}
-\newtheorem*{question}{Question}
-
-% Definition-like environments (numbered)
-\newtheorem{naxiom}{Axiom}
-\newtheorem{ndfn}[nthm]{Definition}
-\newtheorem{negg}[nthm]{Example}
-\newtheorem{nex}{Exercise}[\@@thmtype]
-\newtheorem{nexercise}[nex]{Exercise}
-\newtheorem{nproblem}[nex]{Problem}
-\newtheorem{nquestion}[nex]{Question}
-
-%------------------------------------------------------------
-% ALL BREAK-LINE THEOREM & DEFINITION-LIKE ENVS.
-%------------------------------------------------------------
-
-% Theorems-like environments (not numbered)
-\theoremstyle{plain-break}
-\newtheorem*{claimb}{Claim}
-\newtheorem*{conjectureb}{Conjecture}
-\newtheorem*{corb}{Corollary}
-\newtheorem*{lemmab}{Lemma}
-\newtheorem*{propb}{Proposition}
-\newtheorem*{thmb}{Theorem}
-
-% Theorems-like environments (numbered)
-\newtheorem{nthmb}[nthm]{Theorem}
-\newtheorem{npropb}[nthm]{Proposition}
-\newtheorem{nlemmab}[nthm]{Lemma}
-\newtheorem{ncorb}[nthm]{Corollary}
-\newtheorem{nclaimb}[nthm]{Claim}
-\newtheorem{nconjectureb}[nthm]{Conjecture}
-
-% Definition-like environments (not numbered)
 \theoremstyle{definition-break}
-\newtheorem*{assumptionb}{Assumption}
-\newtheorem*{hypothesisb}{Hypothesis}
-\newtheorem*{lawb}{Law}
-\newtheorem*{notationb}{Notation}
-\newtheorem*{principleb}{Principle}
-\newtheorem*{remarkb}{Remark}
-\newtheorem*{rruleb}{Rule}
-\newtheorem*{warningb}{Warning}
 
-\newtheorem*{axiomb}{Axiom}
-\newtheorem*{dfnb}{Definition}
-\newtheorem*{eggb}{Example}
-\newtheorem*{exb}{Exercise}
-\newtheorem*{exerciseb}{Exercise}
-\newtheorem*{problemb}{Problem}
-\newtheorem*{questionb}{Question}
+\newtheorem{nbaxiom}{Axiom}
+\newtheorem{nblaw}{Law}
+\newtheorem{nbnotation}{Notation}
+\newtheorem{nbprinciple}{Principle}
+\newtheorem{nbwarning}{Warning}
 
-% Definition-like environments (numbered)
-\newtheorem{ndfnb}[nthm]{Definition}
-\newtheorem{neggb}[nthm]{Example}
-\newtheorem{nexb}[nex]{Exercise}
-\newtheorem{nexerciseb}[nex]{Exercise}
-\newtheorem{nproblemb}[nex]{Problem}
-\newtheorem{nquestionb}[nex]{Question}
+\newtheorem*{baxiom}{Axiom}
+\newtheorem*{blaw}{Law}
+\newtheorem*{bnotation}{Notation}
+\newtheorem*{bprinciple}{Principle}
+\newtheorem*{bwarning}{Warning}
 
 %------------------------------------------------------------
 % END OF PROOF: QED SYMBOLS
 %------------------------------------------------------------
-
-% Use this to redefine the qed symbol
 % \renewcommand\qedsymbol{Bob's Your Uncle.}
-\newcommand{\fakeqed}{\pushQED{\qed}\qedhere}
-\newcommand{\eggqed}{\pushQED{\qed}\qedhere} % an alternate qed, for the end of examples.
-\newcommand{\eggqedb}{\null\hfill$\blacksquare$\newline} % a second alternate qed, for the end of examples.
 
-% \newcommand{\qedblack}{\hfill$\blacksquare$}
-% \newcommand{\qeddiamond}{\hfill$\diamond$}
-% \newcommand{\qedopensquare}{\hfill$\Box$}
-% \newcommand{\qedsketch}{\hfill\(\triangle\)}
-% \newcommand{\qedbar}{\hfill\rule{1em}{0.4pt}}
+\newcommand{\qedegg}{\begingroup\pushQED{\qed}\qedhere\endgroup}
+\newcommand{\qedblack}{\begingroup\renewcommand\qedsymbol{$\blacksquare$}\pushQED{\qed}\qedhere\endgroup}
+\newcommand{\qeddiamond}{\begingroup\renewcommand\qedsymbol{$\diamond$}\pushQED{\qed}\qedhere\endgroup}
+\newcommand{\qedtriangle}{\begingroup\renewcommand\qedsymbol{$\triangle$}\pushQED{\qed}\qedhere\endgroup}
+\newcommand{\qedbar}{\begingroup\renewcommand\qedsymbol{\rule[-0.2pt]{2pt}{\fontcharht\font`I}}\pushQED{\qed}\qedhere\endgroup}
+\newcommand{\qedbb}{\begingroup\renewcommand\qedsymbol{//}\pushQED{\qed}\qedhere\endgroup}
+
+\let\eggqed\qedegg % For compatibility (to be removed)
 
 %------------------------------------------------------------
 % SPECIAL CMDS & ENVS FOR QUESTION-SOLUTION TYPESETTING
 %------------------------------------------------------------
 \newcommand{\questlabel}{Question}
-\newcommand{\solutionlabel}{Solution}
 \let\questlabelbreak\relax
+\NewDocumentEnvironment{quest}{o}{\IfNoValueTF{#1}{{\bfseries\questlabel.}}{{\bfseries\questlabel\ {#1}.}}\questlabelbreak}{}
 
-\NewDocumentEnvironment{quest}{o}{\IfNoValueTF{#1}{\textbf{\questlabel.}}{\textbf{\questlabel\ #1.}}\questlabelbreak}{}
-\NewDocumentCommand{\solution}{}{\par\textit{\solutionlabel.}\hspace{2mm}}
 \NewDocumentCommand{\score}{omo}{\hfill{\bfseries[\IfNoValueF{#1}{#1 }#2\IfNoValueF{#3}{ #3}]}}
 \NewDocumentCommand{\hint}{O{Hint}m}{{\itshape(#1: #2)}}
