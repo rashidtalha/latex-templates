@@ -27,7 +27,7 @@
 %------------------------------------------------------------
 % \RequirePackage{xparse}
 \RequirePackage[strict]{changepage}
-\RequirePackage{etoolbox}
+% \RequirePackage{etoolbox}
 % \RequirePackage{calc}
 
 %------------------------------------------------------------
@@ -52,7 +52,6 @@
 % \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
-\RequirePackage{inconsolata}
 \RequirePackage[\@@docindent]{parskip}
 \RequirePackage{setspace}
 \RequirePackage{microtype}
@@ -255,12 +254,6 @@
 
 \DeclareCaptionStyle{marginfigure}{font=small,labelfont=bf,labelsep=endash}
 \DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
-
-%------------------------------------------------------------
-% FANCY BOXES
-%------------------------------------------------------------
-\RequirePackage{mdframed}
-\newmdenv[hidealllines=true, backgroundcolor=boxgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
 
 %------------------------------------------------------------
 % HYPERLINKS
