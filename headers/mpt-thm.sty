@@ -160,7 +160,7 @@
 \newcommand{\qeddiamond}{\begingroup\renewcommand\qedsymbol{$\diamond$}\pushQED{\qed}\qedhere\endgroup}
 \newcommand{\qedtriangle}{\begingroup\renewcommand\qedsymbol{$\triangle$}\pushQED{\qed}\qedhere\endgroup}
 \newcommand{\qedbar}{\begingroup\renewcommand\qedsymbol{\rule[-0.2pt]{2pt}{\fontcharht\font`I}}\pushQED{\qed}\qedhere\endgroup}
-\newcommand{\qedbb}{\begingroup\renewcommand\qedsymbol{//}\pushQED{\qed}\qedhere\endgroup}
+\newcommand{\qedbb}{\begingroup\renewcommand\qedsymbol{\sbox\z@{$T$}\resizebox{!}{1.3\ht\z@}{\raisebox{\depth}{$\m@th/\mkern-4mu/$}}}\pushQED{\qed}\qedhere\endgroup}
 
 \let\eggqed\qedegg % For compatibility (to be removed)
 
@@ -168,8 +168,8 @@
 % SPECIAL CMDS & ENVS FOR QUESTION-SOLUTION TYPESETTING
 %------------------------------------------------------------
 \newcommand{\questlabel}{Question}
-\let\questlabelbreak\relax
-\NewDocumentEnvironment{quest}{o}{\IfNoValueTF{#1}{{\bfseries\questlabel.}}{{\bfseries\questlabel\ {#1}.}}\questlabelbreak}{}
+\NewDocumentEnvironment{quest}{o}{\IfNoValueTF{#1}{{\bfseries\questlabel.}}{{\bfseries\questlabel\ {#1}.}}}{}
+\NewDocumentEnvironment{quest*}{o}{\IfNoValueTF{#1}{{\bfseries\questlabel.}}{{\bfseries\questlabel\ {#1}.}}\newline}{}
 
 \NewDocumentCommand{\score}{omo}{\hfill{\bfseries[\IfNoValueF{#1}{#1 }#2\IfNoValueF{#3}{ #3}]}}
 \NewDocumentCommand{\hint}{O{Hint}m}{{\itshape(#1: #2)}}
