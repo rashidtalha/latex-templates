@@ -1,0 +1,141 @@
+\mode<presentation>
+
+%%%%%%%%%%%%% Font Packages
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{parskip}
+
+%%%%%%%%%%%%% COLOURS
+\definecolor{Primary}{RGB}{0,73,144}
+\definecolor{uWhite}{RGB}{255,255,255}
+\definecolor{uBlack}{RGB}{0,0,0}
+
+\definecolor{Grey}{RGB}{235, 234, 234}
+\definecolor{Red}{RGB}{168, 28, 7}
+\definecolor{Green}{RGB}{25, 89, 5}
+
+\definecolor{alertred}{RGB}{204, 37, 41}
+\definecolor{linkblue}{RGB}{0, 86, 179}
+\definecolor{citegreen}{RGB}{34, 139, 34}
+\definecolor{teal}{RGB}{0,128,128}
+\definecolor{crimson}{RGB}{153, 0, 0}
+\definecolor{softazure}{RGB}{52, 152, 219}
+\definecolor{burntorange}{RGB}{230, 126, 34}
+\definecolor{amethyst}{RGB}{155, 89, 182}
+\definecolor{slategray}{RGB}{127, 140, 141}
+\definecolor{boxgray}{RGB}{233, 233, 233}
+
+%%%%%%%%%%%%% FONT-COLOUR SETTINGS AND NORMALISATION
+\setbeamercolor{normal text}{fg=uBlack, bg=uWhite}
+\setbeamercolor{structure}{fg=Primary, bg=normal text.bg}
+
+\setbeamercolor{background canvas}{bg=normal text.bg}
+
+\setbeamerfont{title}{size=\Large}
+\setbeamercolor{title}{bg=uWhite, fg=structure.fg}
+
+\setbeamercolor{frametitle}{bg=uWhite, fg=structure.fg}
+\setbeamerfont{framesubtitle}{size=\normalsize}
+
+\setbeamercolor{block title}{fg=structure.fg, bg=uWhite}
+\setbeamercolor{block body}{bg=uWhite}
+
+\setbeamercolor{alerted text}{fg=Red}
+\setbeamercolor{block title alerted}{fg=Red, bg=uWhite}
+\setbeamercolor{block body alerted}{bg=uWhite}
+
+%% OTHER THEME (incomplete):
+
+% \setbeamercolor{title}{fg=Primary, bg=}
+% \setbeamercolor{frametitle}{fg=Primary, bg=}
+
+%%%%%%%%%%%%% LISTS
+\setbeamercolor{itemize item}{fg=structure.fg!90}
+\setbeamercolor{itemize subitem}{fg=structure.fg!70}
+\setbeamercolor{itemize subsubitem}{fg=structure.fg!70}
+\setbeamercolor{enumerate item}{fg=structure.fg}
+\setbeamercolor{enumerate subitem}{fg=structure.fg!90}
+\setbeamercolor{enumerate subsubitem}{fg=structure.fg!80}
+
+\setbeamertemplate{itemize item}{\raisebox{0.35ex}{\footnotesize$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.15ex}{\small\textendash}}
+\setbeamertemplate{itemize subsubitem}{\raisebox{0.15ex}{\small\textasteriskcentered}}
+
+\setbeamertemplate{enumerate item}{\arabic{enumi}.}
+\setbeamertemplate{enumerate subitem}{(\alph{enumii})}
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.}
+
+%%%%%%%%%%%%% BIBLIOGRAPHY / REFERENCES
+\setbeamertemplate{bibliography item}[text]
+
+\setbeamercolor{bibliography item}{fg=Primary}
+\setbeamercolor{bibliography entry author}{fg=normal text.fg}
+\setbeamercolor{bibliography entry title}{fg=normal text.fg}
+\setbeamercolor{bibliography entry location}{fg=normal text.fg!70}
+\setbeamercolor{bibliography entry note}{fg=normal text.fg!60}
+
+\setbeamerfont{bibliography item}{size=\small}
+\setbeamerfont{bibliography entry author}{size=\small}
+\setbeamerfont{bibliography entry title}{size=\small}
+\setbeamerfont{bibliography entry location}{size=\small}
+\setbeamerfont{bibliography entry note}{size=\small}
+
+\setbeamertemplate{bibliography entry article}{}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+%%%%%%%%%%%%% OTHER SETTINGS
+\setbeamercovered{transparent}
+\setbeamertemplate{section in toc}[square]
+
+%%%%%%%%%%%%% AUXILIARY
+\newcommand{\umaketitle}{
+\begin{beamercolorbox}[wd=0.9\paperwidth,sep=9pt,center]{title}
+    {\usebeamerfont{title}\inserttitle}\par
+    \ifx\insertsubtitle\@empty\else
+    \vspace{1.5ex}
+    {\usebeamerfont{subtitle}\insertsubtitle}
+    \fi
+\end{beamercolorbox}}
+
+%%%%%%%%%%%%% FOOTLINE
+\beamertemplatenavigationsymbolsempty
+
+\newcommand{\ufootlineL}{}
+\newcommand{\ufootlinecontent}{\ufootlineL\hfill\insertframenumber\space/\space\inserttotalframenumber}
+
+\setbeamerfont{footline}{size=\scriptsize}
+\setbeamercolor{footline}{bg=, fg=normal text.fg}
+
+\setbeamertemplate{footline}{%
+    \leavevmode%
+    \begin{beamercolorbox}[wd=\paperwidth, ht=3ex, dp=1.25ex, leftskip=2ex, rightskip=2ex]{footline}%
+        \usebeamerfont{footline}\ufootlinecontent%
+    \end{beamercolorbox}%
+    \vskip0pt%
+}
+
+%%%%%%%%%%%%% CUSTOM FOOTNOTES (from penrose.cls)
+\renewcommand{\@makefntext}[1]{%
+  \setlength{\parindent}{1.5em}\parskip\z@%
+  \let\nextpar\relax%
+  \everypar{%
+    \hangindent=1.5em\hangafter=1\nextpar%
+    \gdef\nextpar{\hspace{\parindent}}%
+  }%
+  \noindent\hb@xt@1.5em{\hss\@makefnmark\,}#1
+}
+
+\newcommand{\ufootnote}[2][]{
+  \begingroup
+    \renewcommand\thefootnote{}%
+    \def\@makefnmark{$^{#1}$}%
+    \let\Hy@raisedlink\@gobble%
+    \let\hyper@anchorstart\@gobble%
+    \let\hyper@anchorend\@gobble%
+    \footnotetext{#2}%
+  \endgroup
+}
+
+\mode<all>

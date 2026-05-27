@@ -1,0 +1,117 @@
+%!TEX root = main.tex
+
+\section{First Section}
+
+\begin{frame}{}
+    \frametitle[Short Frame Title]{Full Frame Title}
+    \framesubtitle{subtitle}
+
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.\footnote{Alpha}\footnote{Beta}\ufootnote{Gamma}
+
+    \begin{equation}
+        E = mc^{2}
+    \end{equation}
+
+    Duis aute irure dolor in \alert{reprehenderit} in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\end{frame}
+
+\begin{frame}[plain]{Second Frame}
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+    \begin{itemize}
+        \item ABC
+        \item ABC
+        \begin{itemize}
+            \item DEF
+            \begin{itemize}
+                \item XYZ
+                \item XYZ
+            \end{itemize}
+            \item DEF
+        \end{itemize}
+        \item ABC
+    \end{itemize}
+
+    \pause
+
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+\end{frame}
+
+\section{Second Section}
+
+\begin{frame}{Third Frame}
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    \begin{enumerate}
+        \item ABC
+        \item ABC
+        \begin{enumerate}
+            \item DEF
+            \item DEF
+            \begin{enumerate}
+                \item XYZ
+                \item XYZ
+            \end{enumerate}
+        \end{enumerate}
+        \item ABC
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+    \begin{block}{Theorem}
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    \end{block}
+
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+\end{frame}
+
+\section{Third Section}
+
+\begin{frame}{Comparison of Moduli Spaces}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{table}
+        \centering
+        \begin{tabular}{lcc}
+          \toprule
+          \textbf{Space} & \textbf{Dimension} & \textbf{Compact?} \\
+          \midrule
+          $M_g$ (smooth) & $3g-3$ & No \\
+          $\overline{M}_g$ (stable) & $3g-3$ & Yes \\
+          $M_{g,n}$ (marked) & $3g-3+n$ & No \\
+          $\overline{M}_{g,n}$ & $3g-3+n$ & Yes \\
+          \bottomrule
+        \end{tabular}
+        \caption{Dimensions of moduli spaces}
+      \end{table}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Example: $g=1$ (Elliptic Curves)}
+        For genus 1 curves with a marked point:
+        \begin{itemize}
+          \item $M_{1,1} \cong \mathcal{H}/\operatorname{SL}(2,\Z)$
+          \item Dimension = 1
+          \item Compactification adds nodal cubic
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  
+  \vspace{1em}
+  \begin{block}{Remark}
+    The boundary $\overline{M}_g \setminus M_g$ consists of nodal curves with lower genus components.
+  \end{block}
+\end{frame}

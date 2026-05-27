@@ -1,0 +1,44 @@
+\documentclass[aspectratio=1610, 10pt]{beamer}
+
+%-------------------------------
+% Preamble for the theme
+%-------------------------------
+
+\usetheme{trieste}
+% OR
+% \usetheme{dulmen}
+
+%%% Modify the colorscheme (only these three colours are used)
+% \definecolor{Primary}{RGB}{33,73,33}
+% \definecolor{uWhite}{RGB}{255,255,255}
+% \definecolor{uBlack}{RGB}{0,0,0}
+
+%%% Modify the footline (can be modified locally also)
+% manages the content to the left:
+% \renewcommand{\ufootlineL}{\includegraphics[width=10mm]{100.png}}
+% manages the whole footline:
+% \renewcommand{\ufootlinecontent}{\ufootlineL\hfill\insertframenumber\space/\space\inserttotalframenumber}
+
+%-------------------------------
+% Preamble for the document
+%-------------------------------
+
+\usepackage{mpt-core}
+% \usepackage{mpt-ext}
+
+\usepackage{booktabs}
+
+\title[Title]{Title of the Presentation}
+\subtitle{The subtitle of the presentation}
+\author[Talha]{Rashid Talha}
+\institute[ICTP]{International Centre for Theoretical Physics\\Trieste, Italy}
+
+\begin{document}
+
+\input{titlepage}
+\frame{\frametitle{Overview}\tableofcontents[hideallsubsections]}
+\input{content}
+\input{references}
+\input{thanks}
+
+\end{document}
