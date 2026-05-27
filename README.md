@@ -14,6 +14,10 @@ The 'design philosophy' is that the user should retain most of the control, but 
 - `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy). [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/hilbert/main.pdf)
 - `wade`: For simple elegant letters. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/wade/main.pdf)
 
+*Presentations (Beamer Themes).*
+- `trieste`: Minimalistic, complete, easy-to-customize, and ready-to-use presentation.
+- `dulmen`: The same as `trieste` but even more minimalistic.
+
 ### Header/Macro Files:
 *Maths & Physics Tools Bundle.*
 - `mpt-core`: Collection of useful mathematical commands, macros, etc.
