@@ -15,8 +15,8 @@ The 'design philosophy' is that the user should retain most of the control, but 
 - `wade`: For simple elegant letters. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/wade/main.pdf)
 
 *Presentations (Beamer Themes).*
-- `trieste`: Minimalistic, complete, easy-to-customize, and ready-to-use presentation.
-- `dulmen`: The same as `trieste` but even more minimalistic.
+- `trieste`: Minimalistic, complete, easy-to-customize, and ready-to-use presentation. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/beamer/main-trieste.pdf)
+- `dulmen`: The same as `trieste` but even more minimalistic. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/beamer/main-dulmen.pdf)
 
 ### Header/Macro Files:
 *Maths & Physics Tools Bundle.*
