@@ -26,13 +26,7 @@ The 'design philosophy' is that the user should retain most of the control, but 
 
 These header files are best understood by reading through the source code. The macros/environments defined here are the ones that I frequently use in my own work, so 1) these files keep evolving, and 2) you may wish to modify them to match your own requirements.
 
-### Older Files/Project:
-*Inactive (for now).*
-- `salam`: Inspired by certain OUP books, but made for articles and handouts.
-- `dirac`: For sophisticated, primarily academic, books.
-- `witten`: A unique two-column landscape layout for books and notes. Primarily academic.
-
-*One-off project.*
+### Standalone Projects (Older):
 - `cambridge-schedules`: An attempt at re-creating the Cambridge Maths Tripos Schedules PDF in Latex.
 
 ---
