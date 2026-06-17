@@ -160,7 +160,7 @@
 \newcommand{\qeddiamond}{\begingroup\renewcommand\qedsymbol{$\diamond$}\pushQED{\qed}\qedhere\endgroup}
 \newcommand{\qedtriangle}{\begingroup\renewcommand\qedsymbol{$\triangle$}\pushQED{\qed}\qedhere\endgroup}
 \newcommand{\qedbar}{\begingroup\renewcommand\qedsymbol{\rule[-0.2pt]{2pt}{\fontcharht\font`I}}\pushQED{\qed}\qedhere\endgroup}
-\newcommand{\qedbb}{\begingroup\renewcommand\qedsymbol{\sbox\z@{$T$}\resizebox{!}{1.3\ht\z@}{\raisebox{\depth}{$\m@th/\mkern-4mu/$}}}\pushQED{\qed}\qedhere\endgroup}
+\newcommand{\qedbb}{\begingroup\renewcommand\qedsymbol{\sbox\z@{$T$}\raisebox{\depth-1pt}{\resizebox{!}{1.05\ht\z@}{$\m@th/\mkern-4mu/$}}}\pushQED{\qed}\qedhere\endgroup}
 
 \let\eggqed\qedegg % For compatibility (to be removed)
 
