@@ -1,0 +1,87 @@
+\documentclass[10pt]{salam}
+
+\begin{document}
+
+%------------ METADATA -------------
+\title[Short Custom Title]{Possibly Long Title of the Document}
+
+\subtitle{Subtitle of the Document}
+
+\author[*,5]{Rashid Talha}
+\author{Rashid Talha}
+\author[5]{Rashid Talha}
+% \renewcommand{\uauthor}{Custom Authorname String}
+
+\affiliation[*]{Name of the Affiliated Institute, Country}
+\affiliation[5,\dagger]{Name of the Affiliated Institute, Country}
+
+\date{May, 2026}
+%-----------------------------------
+
+\maketitle % every metadata entry is optional
+
+\begin{abstract}
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+\end{abstract}
+
+\tableofcontents
+
+\section{Section Heading}
+\subsection{Subsection Heading}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.\footnote{The usual kind of footnote.}\ufootnote[\dagger]{Manually placed footnote.}\ufootnote{Another manually placed footnote, but without any symbol.}
+
+\umarginpar{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.}
+
+\subsubsection{Subsubsection Heading}
+Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus.
+
+Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna.
+
+% \section{Demonstration of Various Features}
+
+% This class is based on the article class and the class options (if recognised) are directly passed to the article class. The available options are 10pt, 11pt, 12pt, final, draft, fleqn, leqno.
+
+% \title[short]{full} --> access values as \utitle \ushorttitle. If it is not explicitly given, then \ushorttitle equals \utitle. The value of \ushorttitle is used in the page headers. Setting \title is optional; the document will compile but \utitle and \ushorttitle will be empty.
+
+% \author[symbol]{name} --> can be used multiple times, automatically renders the correct author list (with optional symbols if provided) when \maketitle is invoked. The first author name can be accessed through \uauthor, and this can be mannually changed without any issues. The superscript symbols are completely static marks, no checks are enforced. Setting \author is optional.
+
+% \affiliation[symbol]{name} --> can be used multiple times, automatically renders the correct affiliation list (with optional symbols if provided) when \maketitle is invoked. The superscript symbols are completely static marks, no checks are enforced. Setting \affiliation is optional.
+
+% \date{text} --> access values as \udate. Setting \date is optional.
+
+% \begin{abstract}[Heading.] --> Abstract environment with the default heading "Abstract." Override the heading by passing it through the optional argument.
+
+% There are three styles for the header-footer layouts: empty, hf-first (only a footer with page number), hf-general. The hf-first is default for the page where \maketitle is called. And hf-general is default otherwise. The hf-general style has the page number in the footer, \ushorttitle and \uauthor in the header (left and right, respectively).
+
+% \ufootnote[sym]{content} --> Extension of the standard footnote command. They do exactly what you expect them to do, but do \emph{not} leave a mark in the text where they are called. This makes them suitable for use with the author and affiliation symbols. The symbol is optional.
+
+% \begin{tabularx}{width}{col-specs} --> tabularx and booktabs are loaded by default, so this is the environment best way to render tables. In addition to the standard l, r, c, p{...} and X columns, the class also provides C, L, R, D{...}, U{...}, and V{...} column types. D, U, V are C, L, R but with specific widths, while C, L, R use the auto-width features of X.
+
+% Use labels and captionof{type}{description} when not using figure and table (float) environments.
+
+% Use the environments provided by mpt-thm for theorems, definitions, questions, proofs, etc. Use mpt-core (and possibly mpt-ext) to extend the features for typesetting mathematical content.
+
+% \begin{widetext} and \begin{quote} --> do as the name suggest. The quote environment only shrinks the line width (via adjustpage functionality).
+
+% \begin{colbox}[options] --> provides a simple full width colour box through the mdframed package. By default the it uses backgroundcolor=boxgray.
+
+% The class loads natbib with ... options and uses \bibliographystyle{aip} by default. This can be updated in the preamble of the document. The bibliography is introduced through \bibliography{refs-filename}, and should be added manually to the toc as \phantomsection\addcontentsline{toc}{section}{\refname} just before the \bibliography{...} line.
+
+% Lists are controlled through the preloaded enumitem package.
+
+% \umarginpar{content} and \umarginpar*{content} --> These set the content (almost any non-floating content works) in the right margin (if available). Currently these are only functional in the salam.cls layout. The starred version uses normal font (and the default version uses \sffamily).
+
+% A bunch of custom colours are provided. These are: alertred, linkblue, citegreen, teal, crimson, softazure, burntorange, amethyst, slategray, boxgray.
+
+% Hyperref is preloaded and uses colorlinks=true, linktoc=all, allcolors=linkblue.
+
+\begin{center}
+  \vspace*{0.5em}\rule{0.8\linewidth}{0.8pt}
+\end{center}
+
+\nocite{*}
+% \renewcommand{\refname}{Custom Name}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+{\small\bibliography{references}}
+
+\end{document}
