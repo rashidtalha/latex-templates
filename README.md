@@ -8,10 +8,11 @@ The 'design philosophy' is that the user should retain most of the control, but 
 ### Active Classes:
 *Articles.*
 - `penrose`: Broadly applicable, easily tweak-able, modern extension of the standard article class for general purpose articles, essays, assignments, and so on. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/penrose/main.pdf)
+- `salam`: Like the penrose but with a marginpar for sidenotes. Fully compatible with the penrose class. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/salam/main.pdf)
 - `cauchy`: Clutter-free, simple and extendible. For lecture notes, theses and longer reports. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/cauchy/main.pdf)
 
 *Books & Letters.*
-- `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy). [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/hilbert/main.pdf)
+- `hilbert`: For beautiful books. (Not aimed to be maths-heavy). [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/hilbert/main.pdf)
 - `wade`: For simple elegant letters. [Sample PDF](https://github.com/rashidtalha/latex-templates/blob/main/classes-active/wade/main.pdf)
 
 *Presentations (Beamer Themes).*
