@@ -2,7 +2,6 @@
 % INITIALIZING & HANDLING CLASS OPTIONS
 %------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-% \ProvidesClass{cauchy}[2022/12/20 A simple article class for maths and physics thesis]
 \ProvidesClass{cauchy}[2026/05/03 v2 Simple article class for longer reports, theses, etc]
 
 \DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} % default (in the article cls)
@@ -25,10 +24,9 @@
 %------------------------------------------------------------
 % GENERAL HANDY PACKAGES
 %------------------------------------------------------------
-% \RequirePackage{xparse}
 \RequirePackage[strict]{changepage}
-% \RequirePackage{etoolbox}
-% \RequirePackage{calc}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
 
 %------------------------------------------------------------
 % STANDARD PAGE LAYOUT
@@ -55,13 +53,14 @@
 \RequirePackage[\@@docindent]{parskip}
 \RequirePackage{setspace}
 \RequirePackage{microtype}
+\RequirePackage[british]{babel}
 
 \setstretch{1.1} % increased line spacing
 
 %------------------------------------------------------------
 % COLOURS
 %------------------------------------------------------------
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 \definecolor{alertred}{RGB}{204, 37, 41}
 \definecolor{linkblue}{RGB}{0, 86, 179}
 \definecolor{citegreen}{RGB}{34, 139, 34}
@@ -92,9 +91,9 @@
 %------------------------------------------------------------
 \renewcommand{\maketitle}{} % the title page is given separately
 
-\renewenvironment{abstract}
-  {\begin{adjustwidth}{11mm}{11mm}}
-  {\vspace*{0.5em}\end{adjustwidth}}
+\RenewDocumentEnvironment{abstract}{O{Abstract.}}
+  {\begin{adjustwidth}{13mm}{13mm}\IfBlankTF{#1}{}{\textbf{#1}\enspace}\ignorespaces}
+  {\end{adjustwidth}\vspace{0.75em}}
 
 %------------------------------------------------------------
 % HEADER & FOOTER
@@ -208,7 +207,7 @@
 % BIBLIOGRAPHY/REFERENCES
 %------------------------------------------------------------
 \RequirePackage[square,numbers,comma,sort&compress]{natbib}
-\bibliographystyle{naturemag}
+\bibliographystyle{aip}
 \let\openbox\relax
 
 \renewcommand{\refname}{Bibliography}
@@ -220,7 +219,7 @@
 \newenvironment{widetext}{\begin{adjustwidth}{-12mm}{-12mm}}{\end{adjustwidth}}
 
 %------------------------------------------------------------
-% THE LISTS
+% LISTS
 %------------------------------------------------------------
 \RequirePackage{enumitem}
 
@@ -244,20 +243,10 @@
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 %------------------------------------------------------------
-% CAPTIONS
+% CAPTIONS & HYPERLINKS
 %------------------------------------------------------------
 \RequirePackage[font=small,labelfont=bf,labelsep=endash]{caption}
 
-\DeclareCaptionStyle{widefigure}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{margintable}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{widetable}{font=small,labelfont=bf,labelsep=endash}
-
-\DeclareCaptionStyle{marginfigure}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
-
-%------------------------------------------------------------
-% HYPERLINKS
-%------------------------------------------------------------
 \RequirePackage{hyperref}
 \hypersetup{
   colorlinks=true,

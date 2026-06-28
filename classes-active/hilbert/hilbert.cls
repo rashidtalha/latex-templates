@@ -2,7 +2,6 @@
 % INITIALIZING & HANDLING CLASS OPTIONS
 %-------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-% \ProvidesClass{hilbert}[2021/07/02 Inspired by the Two-Line style]
 \ProvidesClass{hilbert}[2026/05/02 v2 Inspired by the Two-Line style]
 
 \DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{book}} % default (in the book cls)
@@ -24,10 +23,10 @@
 %------------------------------------------------------------
 % GENERAL HANDY PACKAGES
 %------------------------------------------------------------
-\RequirePackage{xparse}
+% \RequirePackage{xparse}
 \RequirePackage{etoolbox}
 \RequirePackage[strict]{changepage}
-% \RequirePackage{calc}
+\RequirePackage{calc}
 
 %-------------------------------------------------------------
 % STANDARD PAGE LAYOUT
@@ -71,13 +70,14 @@
 \RequirePackage[\@@docindent]{parskip}
 \RequirePackage{setspace}
 \RequirePackage{microtype}
+\RequirePackage[british]{babel}
 
 \setstretch{1.1} % increased line spacing
 
 %------------------------------------------------------------
 % COLOURS
 %------------------------------------------------------------
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 \definecolor{alertred}{RGB}{204, 37, 41}
 \definecolor{linkblue}{RGB}{0, 86, 179}
 \definecolor{citegreen}{RGB}{34, 139, 34}
@@ -230,7 +230,7 @@
 \newcommand{\rulediamonds}{\par\nopagebreak\vspace{2.5ex}\centerline{$\diamond$ \quad $\diamond$ \quad $\diamond$}\vspace{0.75ex}\par}
 
 %------------------------------------------------------------
-% THE LISTS
+% LISTS
 %------------------------------------------------------------
 \RequirePackage{enumitem}
 
@@ -254,20 +254,10 @@
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 %------------------------------------------------------------
-% CAPTIONS
+% CAPTIONS & HYPERLINKS
 %------------------------------------------------------------
 \RequirePackage[font=small,labelfont=bf,labelsep=endash]{caption}
 
-\DeclareCaptionStyle{widefigure}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{margintable}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{widetable}{font=small,labelfont=bf,labelsep=endash}
-
-\DeclareCaptionStyle{marginfigure}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
-
-%------------------------------------------------------------
-% HYPERLINKS
-%------------------------------------------------------------
 \RequirePackage{hyperref}
 \hypersetup{
   colorlinks=true,

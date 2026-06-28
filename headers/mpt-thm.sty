@@ -153,8 +153,6 @@
 %------------------------------------------------------------
 % END OF PROOF: QED SYMBOLS
 %------------------------------------------------------------
-% \renewcommand\qedsymbol{Bob's Your Uncle.}
-
 \newcommand{\qedegg}{\begingroup\pushQED{\qed}\qedhere\endgroup}
 \newcommand{\qedblack}{\begingroup\renewcommand\qedsymbol{$\blacksquare$}\pushQED{\qed}\qedhere\endgroup}
 \newcommand{\qeddiamond}{\begingroup\renewcommand\qedsymbol{$\diamond$}\pushQED{\qed}\qedhere\endgroup}
@@ -169,7 +167,8 @@
 %------------------------------------------------------------
 \newcommand{\questlabel}{Question}
 \NewDocumentEnvironment{quest}{o}{\IfNoValueTF{#1}{{\bfseries\questlabel.}}{{\bfseries\questlabel\ {#1}.}}}{}
-\NewDocumentEnvironment{quest*}{o}{\IfNoValueTF{#1}{{\bfseries\questlabel.}}{{\bfseries\questlabel\ {#1}.}}\newline}{}
+\NewDocumentEnvironment{quest*}{o}{\IfNoValueTF{#1}{{\bfseries\questlabel.}}{{\bfseries\questlabel\ {#1}.}}\\}{}
+\NewDocumentEnvironment{bquest}{o}{\IfNoValueTF{#1}{{\bfseries\questlabel.}}{{\bfseries\questlabel\ {#1}.}}\\}{} % for compatability
 
 \NewDocumentCommand{\score}{omo}{\hfill{\bfseries[\IfNoValueF{#1}{#1 }#2\IfNoValueF{#3}{ #3}]}}
 \NewDocumentCommand{\hint}{O{Hint}m}{{\itshape(#1: #2)}}

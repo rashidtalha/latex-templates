@@ -106,8 +106,10 @@
 
 \newcommand{\gal}{\operatorname{Gal}}
 \newcommand{\fix}{\operatorname{Fix}}
-\newcommand{\ch}{\operatorname{char}}
+\newcommand{\characteristic}{\operatorname{char}}
 \newcommand{\chern}{\operatorname{ch}}
+
+\newcommand{\ch}{\operatorname{char}} % deprecated (for compatability only)
 
 %------------------------------------------------------------
 % VECTORS, TOPOLOGY, GEOMETRY, ANALYSIS
@@ -213,7 +215,8 @@
 \newcommand{\Id}{\mathrm{Id}} % Identity element/map (another one)
 
 \newcommand{\Der}{\mathrm{Der}}
-\newcommand{\pt}{\{\mathrm{pt}\}} % Point
+% \newcommand{\pt}{\{\mathrm{pt}\}} % Point
+\DeclareDocumentCommand{\pt}{s}{\IfBooleanTF{#1}{\mathrm{pt}}{\{\mathrm{pt}\}}} % Point
 
 %-------------------------------------------------------------
 % GENERAL MACROS
