@@ -2,7 +2,6 @@
 % INITIALIZING & HANDLING CLASS OPTIONS
 %------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-% \ProvidesClass{penrose}[2023/12/29 A simple article class for maths and physics]
 \ProvidesClass{penrose}[2026/05/01 v2 Personalised, customizable, clean article class]
 
 \DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} % default (in the article cls)
@@ -23,7 +22,7 @@
 % \RequirePackage{xparse}
 \RequirePackage[strict]{changepage}
 \RequirePackage{etoolbox}
-% \RequirePackage{calc}
+\RequirePackage{calc}
 
 %------------------------------------------------------------
 % STANDARD PAGE LAYOUT
@@ -33,7 +32,7 @@
   nomarginpar,
   includeall,
   top=16mm,
-  bottom=22mm,
+  bottom=20mm,
   left=30mm,
   right=30mm,
   headheight=7mm,
@@ -50,13 +49,14 @@
 \RequirePackage{setspace}
 \RequirePackage{parskip}
 \RequirePackage{microtype}
+\RequirePackage[british]{babel}
 
 \setstretch{1.1} % increased line spacing
 
 %------------------------------------------------------------
 % COLOURS
 %------------------------------------------------------------
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 \definecolor{alertred}{RGB}{204, 37, 41}
 \definecolor{linkblue}{RGB}{0, 86, 179}
 \definecolor{citegreen}{RGB}{34, 139, 34}
@@ -69,15 +69,59 @@
 \definecolor{boxgray}{RGB}{233, 233, 233}
 
 %------------------------------------------------------------
+% AUTHOR & AFFILIATION SYSTEM (INTERNAL WRAPPERS)
+%------------------------------------------------------------
+\newcounter{internal@authcount}
+\newcounter{internal@affilcount}
+
+% Internal: render one author
+\newcommand{\internal@renderauth}[1]{%
+  \csuse{internal@auth@name@#1}%
+  \ifcsempty{internal@auth@sym@#1}{}{$^{\csuse{internal@auth@sym@#1}}$}%
+}
+
+% Internal: render one affiliation
+\newcommand{\internal@renderaffil}[1]{%
+  \ifcsempty{internal@affil@sym@#1}{}{$^{\csuse{internal@affil@sym@#1}}$}%
+  \csuse{internal@affil@name@#1}%
+}
+
+% Internal: full author list with oxford comma
+\newcommand{\internal@renderauthors}{%
+  \ifnum\theinternal@authcount=0\relax\else
+  \ifnum\theinternal@authcount=1\relax
+    \internal@renderauth{1}%
+  \else
+  \ifnum\theinternal@authcount=2\relax
+    \internal@renderauth{1} and \internal@renderauth{2}%
+  \else
+    \@tempcnta=1
+    \@whilenum\@tempcnta<\theinternal@authcount\do{%
+      \internal@renderauth{\the\@tempcnta},\space
+      \advance\@tempcnta\@ne
+    }%
+    and \internal@renderauth{\theinternal@authcount}%
+  \fi\fi\fi
+}
+
+% Internal: all affiliation lines
+\newcommand{\internal@renderaffils}{%
+  \@tempcnta=1
+  \@whilenum\@tempcnta<\theinternal@affilcount\do{%
+    \internal@renderaffil{\the\@tempcnta}\\
+    \advance\@tempcnta\@ne
+  }%
+  \internal@renderaffil{\theinternal@affilcount}\par%
+}
+
+%------------------------------------------------------------
 % CLASS WIDE COMMON SETUP: DOCUMENT INFORMATION COMMANDS
 %------------------------------------------------------------
 \newcommand{\utitle}{\PackageWarning{penrose}{Title not set!}}
 \newcommand{\ushorttitle}{}
 \newcommand{\usubtitle}{}
 \newcommand{\uauthor}{}
-\newcommand{\uaffiliation}{}
 \newcommand{\udate}{}
-\newcommand{\@dateline}{}
 
 \DeclareDocumentCommand{\title}{om}{
   \renewcommand{\utitle}{#2}
@@ -91,85 +135,32 @@
   \renewcommand{\usubtitle}{#1}
 }
 
-\DeclareDocumentCommand{\date}{sm}{
-  \renewcommand{\udate}{#2}
-  \renewcommand{\@dateline}{
-    \IfBooleanTF{#1}{#2}{(Date: #2)}\par
-  }
-  \gdef\@date{#2}
-}
-
-%------------------------------------------------------------
-% AUTHOR & AFFILIATION SYSTEM
-%------------------------------------------------------------
-\newcounter{penrose@authcount}
-\newcounter{penrose@affilcount}
-
-% Internal: render one author
-\newcommand{\penrose@renderauth}[1]{%
-  \csuse{penrose@auth@name@#1}%
-  \ifcsempty{penrose@auth@sym@#1}{}%
-    {$^{\csuse{penrose@auth@sym@#1}}$}%
-}
-
-% Internal: render one affiliation
-\newcommand{\penrose@renderaffil}[1]{%
-  \ifcsempty{penrose@affil@sym@#1}{}%
-    {$^{\csuse{penrose@affil@sym@#1}}$}%
-  \csuse{penrose@affil@name@#1}%
-}
-
-% Internal: full author list with oxford comma
-\newcommand{\penrose@renderauthors}{%
-  \ifnum\thepenrose@authcount=0\relax\else
-  \ifnum\thepenrose@authcount=1\relax
-    \penrose@renderauth{1}%
-  \else
-  \ifnum\thepenrose@authcount=2\relax
-    \penrose@renderauth{1} and \penrose@renderauth{2}%
-  \else
-    \@tempcnta=1
-    \@whilenum\@tempcnta<\thepenrose@authcount\do{%
-      \penrose@renderauth{\the\@tempcnta},\space
-      \advance\@tempcnta\@ne
-    }%
-    and \penrose@renderauth{\thepenrose@authcount}%
-  \fi\fi\fi
-}
-
-% Internal: all affiliation lines
-\newcommand{\penrose@renderaffils}{%
-  \@tempcnta=1
-  \@whilenum\@tempcnta<\thepenrose@affilcount\do{%
-    \penrose@renderaffil{\the\@tempcnta}\\
-    \advance\@tempcnta\@ne
-  }%
-  \penrose@renderaffil{\thepenrose@affilcount}\par%
-}
-
-% \author[sym]{name}
 \DeclareDocumentCommand{\author}{om}{%
-  \stepcounter{penrose@authcount}%
-  \csdef{penrose@auth@name@\thepenrose@authcount}{#2}%
+  \stepcounter{internal@authcount}%
+  \csdef{internal@auth@name@\theinternal@authcount}{#2}%
   \IfNoValueTF{#1}%
-    {\csdef{penrose@auth@sym@\thepenrose@authcount}{}}%
-    {\csdef{penrose@auth@sym@\thepenrose@authcount}{#1}}%
-  \ifnum\thepenrose@authcount=1\relax
-    \gdef\penrose@firstauthor{#2}%
+    {\csdef{internal@auth@sym@\theinternal@authcount}{}}%
+    {\csdef{internal@auth@sym@\theinternal@authcount}{#1}}%
+  \ifnum\theinternal@authcount=1\relax
+    \gdef\internal@firstauthor{#2}%
     \renewcommand{\uauthor}{#2}%
     \gdef\@author{#2}%
   \else
-    \renewcommand{\uauthor}{\penrose@firstauthor\ et al.}%
+    \renewcommand{\uauthor}{\internal@firstauthor\ et al.}%
   \fi
 }
 
-% \affiliation[sym]{text}
 \DeclareDocumentCommand{\affiliation}{om}{%
-  \stepcounter{penrose@affilcount}%
-  \csdef{penrose@affil@name@\thepenrose@affilcount}{#2}%
+  \stepcounter{internal@affilcount}%
+  \csdef{internal@affil@name@\theinternal@affilcount}{#2}%
   \IfNoValueTF{#1}%
-    {\csdef{penrose@affil@sym@\thepenrose@affilcount}{}}%
-    {\csdef{penrose@affil@sym@\thepenrose@affilcount}{#1}}%
+    {\csdef{internal@affil@sym@\theinternal@affilcount}{}}%
+    {\csdef{internal@affil@sym@\theinternal@affilcount}{#1}}%
+}
+
+\DeclareDocumentCommand{\date}{m}{
+  \renewcommand{\udate}{#1}
+  \gdef\@date{#1}
 }
 
 %------------------------------------------------------------
@@ -180,20 +171,23 @@
   \thispagestyle{hf-first}
   \begin{adjustwidth}{-13mm}{-13mm}
     \centering
-    {\Large\bfseries\utitle\par}\vspace*{0.2em}
-    {\large\usubtitle\par}\vspace*{0.7em}
-    {\penrose@renderauthors\par}%
-    \ifnum\thepenrose@affilcount>0\relax
-      {\itshape\penrose@renderaffils\par}%
+    {\Large\bfseries\utitle\par}
+    \IfBlankTF{\usubtitle}{}{\vspace{0.2em}{\large\usubtitle\par}}
+    \ifnum\value{internal@authcount}>0
+      \vspace{0.2em}{\internal@renderauthors\par}
     \fi
-    \@dateline\vspace*{0.5em}
+    \ifnum\value{internal@affilcount}>0
+      \vspace{0.2em}{\itshape\internal@renderaffils\par}%
+    \fi
+    \IfBlankTF{\udate}{}{\vspace{0.2em}{\udate\par}}
+    \vspace{0.75em}
   \end{adjustwidth}
   \endgroup
 }
 
-\renewenvironment{abstract}
-  {\begin{adjustwidth}{11mm}{11mm}}
-  {\vspace*{0.5em}\end{adjustwidth}}
+\RenewDocumentEnvironment{abstract}{O{Abstract.}}
+  {\begin{adjustwidth}{13mm}{13mm}\IfBlankTF{#1}{}{\textbf{#1}\enspace}\ignorespaces}
+  {\end{adjustwidth}\vspace{0.75em}}
 
 %------------------------------------------------------------
 % HEADER & FOOTER
@@ -208,8 +202,8 @@
 % Header-Footer style for the rest of the document
 \fancypagestyle{hf-general}{
   \fancyhf{}
-  \fancyhead[L]{{\slshape\protect\ushorttitle}}
-  \fancyhead[R]{{\slshape\protect\uauthor}}
+  \fancyhead[L]{{\slshape\ushorttitle}}
+  \fancyhead[R]{{\slshape\uauthor}}
   \fancyfoot[C]{-- \thepage\ --}
   \renewcommand{\headrulewidth}{0pt}
 }
@@ -245,20 +239,20 @@
 % BIBLIOGRAPHY/REFERENCES
 %------------------------------------------------------------
 \RequirePackage[square,numbers,comma,sort&compress]{natbib}
-\bibliographystyle{naturemag}
+\bibliographystyle{aip}
 \let\openbox\relax
 
 %------------------------------------------------------------
 % ADDITIONAL ENVIRONMENTS
 %------------------------------------------------------------
-\renewenvironment{quote}{\begin{adjustwidth}{11mm}{11mm}}{\end{adjustwidth}}
+\renewenvironment{quote}{\begin{adjustwidth}{13mm}{13mm}}{\end{adjustwidth}}
 \newenvironment{widetext}{\begin{adjustwidth}{-13mm}{-13mm}}{\end{adjustwidth}}
 
 \RequirePackage{mdframed}
 \newmdenv[hidealllines=true, backgroundcolor=boxgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
 
 %------------------------------------------------------------
-% THE LISTS
+% LISTS
 %------------------------------------------------------------
 \RequirePackage{enumitem}
 
@@ -282,20 +276,13 @@
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 %------------------------------------------------------------
-% CAPTIONS
+% CAPTIONS & HYPERLINKS
 %------------------------------------------------------------
 \RequirePackage[font=small,labelfont=bf,labelsep=endash]{caption}
 
-\DeclareCaptionStyle{widefigure}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{margintable}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{widetable}{font=small,labelfont=bf,labelsep=endash}
+% For compatability with other classes
+\DeclareDocumentCommand{\umarginpar}{sm}{}
 
-\DeclareCaptionStyle{marginfigure}{font=small,labelfont=bf,labelsep=endash}
-\DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
-
-%------------------------------------------------------------
-% HYPERLINKS
-%------------------------------------------------------------
 \RequirePackage{hyperref}
 \hypersetup{
   colorlinks=true,

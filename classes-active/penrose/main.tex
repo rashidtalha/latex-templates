@@ -1,154 +1,82 @@
 \documentclass[11pt]{penrose}
 
-\usepackage{mpt-core}
-\usepackage{mpt-thm}
-\usepackage{graphicx}
-
 \begin{document}
 
 %------------ METADATA -------------
-\title[Penrose Class Demo]{The \texttt{Penrose} Class: Personalised Version of the \LaTeX\ Article Class}
+\title[Short Custom Title]{Possibly Long Title of the Document}
 
-\subtitle{Documentation and Demonstration for \texttt{penrose.cls} Version 2.0}
+\subtitle{Subtitle of the Document}
 
-\author[*,2]{Rashid Talha}
+\author[*,5]{Rashid Talha}
 \author{Rashid Talha}
-\author[2]{Rashid Talha}
-% \renewcommand{\uauthor}{Manual Override for the header}
+\author[5]{Rashid Talha}
+% \renewcommand{\uauthor}{Custom Authorname String}
 
-\affiliation[*]{Scuola Internazionale Superiore di Studi Avanzati (SISSA), Trieste, Italy}
-\affiliation[2,\dagger]{International Centre for Theoretical Physics (ICTP), Trieste, Italy}
+\affiliation[*]{Name of the Affiliated Institute, Country}
+\affiliation[5,\dagger]{Name of the Affiliated Institute, Country}
 
-\date*{May, 2026}
+\date{May, 2026}
 %-----------------------------------
 
-\maketitle
-\ufootnote[\dagger]{abcd}
+\maketitle % every metadata entry is optional
 
 \begin{abstract}
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 \end{abstract}
 
-% \tableofcontents
-
-\section{Introduction}
-In this example document we describe how to use the \texttt{penrose} class. This is not a minimal working example, and might not cover all the features of this class. One should see the source code of this PDF for a more technical introduction. We have also used the \texttt{mpt-core} and \texttt{mpt-thm} packages written by the author to include brief samples of mathematical content. These are completely optional, and the user can use their own mathematical packages if needed.
-
-\section{Metadata and The Title Block}
-The class provides a flexible way to handle your document information. You can specify a subtitle and affiliation, which are automatically formatted in the title block. Note that the \verb|\title| command accepts an optional argument in square brackets; this is what appears in the page headers from page two onwards, preventing long titles from overflowing the header space.
-
-Similarly, the \verb|\date| command is versatile. If you prefer a formal look, the standard command adds a ``Date:'' prefix. If you want a cleaner look, you can use the starred version \verb|\date*\{...\}| to print the date on its own.
-
-Use \verb|\maketitle| to display the title block. Both the \verb|\maketitle| command and the \verb|abstract| environment are optional and should be used after \verb|\begin{document}|.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-\section{Tables and Columns}
-The class extends standard tables by providing custom column types through \verb|tabularx| and \verb|booktabs| packages. These are particularly useful when you need precise control over alignment and width. These are listed in table~(\ref{tab:tablename}). Additionally the standard column type \texttt{l, r, c, p\{<length>\}, X} defined by \verb|tabularx| are also available.
-
-\begin{center}
-  \captionof{table}{Custom column types}
-  \label{tab:tablename}
-  \begin{tabularx}{ 0.75\textwidth }{ D{25mm} X }
-    \toprule
-    Type & Description\\
-    \midrule
-    \texttt{C} & \texttt{X} with centre aligned text\\
-    \texttt{L} & \texttt{X} with left aligned text\\
-    \texttt{R} & \texttt{X} with right aligned text\\
-    \texttt{D\{len\}} & \texttt{p\{len\}} with centre aligned text\\
-    \texttt{U\{len\}} & \texttt{p\{len\}} with left aligned text\\
-    \texttt{V\{len\}} & \texttt{p\{len\}} with right aligned text\\
-    \bottomrule
-  \end{tabularx}
-\end{center}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+\tableofcontents
 
 \section{Section Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
-
 \subsection{Subsection Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duises aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.\footnote{The usual kind of footnote.}\ufootnote[\dagger]{Manually placed footnote.}\ufootnote{Another manually placed footnote, but without any symbol.}
 
-\begin{nthm}[Global Hyperbolicity]
-    A spacetime $(M, g)$ is globally hyperbolic if it contains a Cauchy surface.
-\end{nthm}
-
-Equation~\eqref{eq:eqname} is known as the Einstein's field equation of General Relativity.
-\begin{equation}
-    R_{ab} - \frac{1}{2}R g_{ab} = 8\pi G T_{ab}
-    \label{eq:eqname}
-\end{equation}
-For citations, the class is pre-configured with \texttt{natbib} and uses the \texttt{naturemag} bibliography style. And finaly here are some example of citations \cite{CitekeyArticle}, \citep{CitekeyBook}, \cite[page -1]{CitekeyArticle}.
-
-\begin{subequations}
-  \begin{equation}
-    a^{2} + b^{2} = c^{2}
-    \label{eq:subeq1}
-  \end{equation}
-  Lorem ipsum dolor sit amet.
-  \begin{equation}
-    a^{3} + b^{3} = c^{3}
-    \label{eq:subeq2}
-  \end{equation}
-\end{subequations}
-Equations \eqref{eq:subeq1} and \eqref{eq:subeq2} are subequations.
+\umarginpar*{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.}
 
 \subsubsection{Subsubsection Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus.
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\textwidth]{../generic-media/180.png}
-  \caption{A sample figure showing the clean captioning style of the class.}
-  \label{fig:figname}
-\end{figure}
+Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna.
 
-\subsection{Subsection Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. See figure~(\ref{fig:figname}).
+% \section{Demonstration of Various Features}
 
-\section{Section Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\footnote{This is a usual footnote that leaves a mark in the main text.} Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.\ufootnote{This is a special footnote that does \emph{not} leaves a mark in the main text. It is placed using the command \texttt{ufootnote[symbol]{text}}.}
+% This class is based on the article class and the class options (if recognised) are directly passed to the article class. The available options are 10pt, 11pt, 12pt, final, draft, fleqn, leqno.
 
-\subsection{Subsection Heading}
-Lorem\footnote{This is yet another normal footnote. Notice how the footnote counter works as expected.} ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.\ufootnote[\ddagger]{Lastly, this is again one of those \texttt{ufootnote} footnotes, but now with a custom symbol.}
+% \title[short]{full} --> access values as \utitle \ushorttitle. If it is not explicitly given, then \ushorttitle equals \utitle. The value of \ushorttitle is used in the page headers. Setting \title is optional; the document will compile but \utitle and \ushorttitle will be empty.
 
-In case you want a wider text block. You can use the \texttt{widetext} environment.
+% \author[symbol]{name} --> can be used multiple times, automatically renders the correct author list (with optional symbols if provided) when \maketitle is invoked. The first author name can be accessed through \uauthor, and this can be mannually changed without any issues. The superscript symbols are completely static marks, no checks are enforced. Setting \author is optional.
 
-\begin{widetext}
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-\end{widetext}
+% \affiliation[symbol]{name} --> can be used multiple times, automatically renders the correct affiliation list (with optional symbols if provided) when \maketitle is invoked. The superscript symbols are completely static marks, no checks are enforced. Setting \affiliation is optional.
 
-In the other direction, there is a \texttt{quote} environment.
+% \date{text} --> access values as \udate. Setting \date is optional.
 
-\begin{quote}
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-\end{quote}
+% \begin{abstract}[Heading.] --> Abstract environment with the default heading "Abstract." Override the heading by passing it through the optional argument.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+% There are three styles for the header-footer layouts: empty, hf-first (only a footer with page number), hf-general. The hf-first is default for the page where \maketitle is called. And hf-general is default otherwise. The hf-general style has the page number in the footer, \ushorttitle and \uauthor in the header (left and right, respectively).
 
-\begin{colbox}
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur.
-\end{colbox}
+% \ufootnote[sym]{content} --> Extension of the standard footnote command. They do exactly what you expect them to do, but do \emph{not} leave a mark in the text where they are called. This makes them suitable for use with the author and affiliation symbols. The symbol is optional.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur.
+% \begin{tabularx}{width}{col-specs} --> tabularx and booktabs are loaded by default, so this is the environment best way to render tables. In addition to the standard l, r, c, p{...} and X columns, the class also provides C, L, R, D{...}, U{...}, and V{...} column types. D, U, V are C, L, R but with specific widths, while C, L, R use the auto-width features of X.
 
-\section{Conclusion}
-After procrastinating for hours, I finally gave up on avoiding AI and asked ChatGPT to write a concluding paragraph. This is what it had to say: The \texttt{penrose} class is designed to be out-of-the-way. It handles the heavy lifting of page geometry and headers so you can focus on the Lie algebras or the gravitational flux. By keeping the design minimal, it ensures that the document remains timeless.
+% Use labels and captionof{type}{description} when not using figure and table (float) environments.
+
+% Use the environments provided by mpt-thm for theorems, definitions, questions, proofs, etc. Use mpt-core (and possibly mpt-ext) to extend the features for typesetting mathematical content.
+
+% \begin{widetext} and \begin{quote} --> do as the name suggest. The quote environment only shrinks the line width (via adjustpage functionality).
+
+% \begin{colbox}[options] --> provides a simple full width colour box through the mdframed package. By default the it uses backgroundcolor=boxgray.
+
+% The class loads natbib with ... options and uses \bibliographystyle{aip} by default. This can be updated in the preamble of the document. The bibliography is introduced through \bibliography{refs-filename}, and should be added manually to the toc as \phantomsection\addcontentsline{toc}{section}{\refname} just before the \bibliography{...} line.
+
+% Lists are controlled through the preloaded enumitem package.
+
+% \umarginpar{content} and \umarginpar*{content} --> These set the content (almost any non-floating content works) in the right margin (if available). Currently these are only functional in the salam.cls layout. The starred version uses normal font (and the default version uses \sffamily).
+
+% A bunch of custom colours are provided. These are: alertred, linkblue, citegreen, teal, crimson, softazure, burntorange, amethyst, slategray, boxgray.
+
+% Hyperref is preloaded and uses colorlinks=true, linktoc=all, allcolors=linkblue.
 
 \begin{center}
-  \vspace*{0.5em}\rule{0.8\textwidth}{0.8pt}
+  \vspace*{0.5em}\rule{0.8\linewidth}{0.8pt}
 \end{center}
 
 \nocite{*}
